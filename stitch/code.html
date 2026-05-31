@@ -1,0 +1,578 @@
+<html class="scroll-smooth" lang="en"><head></head><body class="font-body-md text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">```html
+
+
+
+    <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jamia Siddiqiyyah | Preserving Sacred Heritage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config Execution -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "primary-fixed-dim": "#95d3ba",
+                "on-primary": "#ffffff",
+                "background": "#f5f1e6",
+                "on-error": "#ffffff",
+                "on-surface": "#1b1c15",
+                "surface-dim": "#dbdbcf",
+                "surface-container-highest": "#e4e3d7",
+                "on-primary-fixed-variant": "#0b513d",
+                "error-container": "#ffdad6",
+                "on-secondary-fixed-variant": "#574500",
+                "inverse-on-surface": "#f2f1e5",
+                "surface-bright": "#f5f1e6",
+                "surface-container": "#ece8db",
+                "inverse-primary": "#95d3ba",
+                "surface-container-low": "#f0ede0",
+                "on-primary-container": "#80bea6",
+                "secondary-container": "#fed65b",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary-fixed": "#241a00",
+                "tertiary-fixed-dim": "#bdc7d9",
+                "surface-container-high": "#e4e0d2",
+                "primary": "#064e3b",
+                "surface-variant": "#e4e3d7",
+                "on-tertiary-fixed": "#121c2a",
+                "tertiary": "#252f3d",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#e9c349",
+                "error": "#ba1a1a",
+                "on-background": "#1b1c15",
+                "inverse-surface": "#303129",
+                "secondary-fixed": "#ffe088",
+                "on-secondary": "#ffffff",
+                "secondary": "#735c00",
+                "tertiary-fixed": "#d9e3f6",
+                "surface-tint": "#2b6954",
+                "on-tertiary-container": "#a8b2c4",
+                "tertiary-container": "#3b4554",
+                "surface": "#f5f1e6",
+                "on-error-container": "#93000a",
+                "on-primary-fixed": "#002117",
+                "outline": "#707974",
+                "on-secondary-container": "#745c00",
+                "outline-variant": "#bfc9c3",
+                "primary-fixed": "#b0f0d6",
+                "on-tertiary-fixed-variant": "#3d4756",
+                "on-surface-variant": "#404944",
+                "primary-container": "#064e3b"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.5rem",
+                "xl": "1rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "unit": "8px",
+                "max-width": "1280px",
+                "margin-desktop": "80px",
+                "margin-mobile": "20px",
+                "gutter": "24px"
+            },
+            "fontFamily": {
+                "headline-md": ["Playfair Display", "serif"],
+                "body-lg": ["Inter", "sans-serif"],
+                "title-lg": ["Inter", "sans-serif"],
+                "body-md": ["Inter", "sans-serif"],
+                "label-caps": ["Inter", "sans-serif"],
+                "headline-lg": ["Playfair Display", "serif"],
+                "display-lg-mobile": ["Playfair Display", "serif"],
+                "display-lg": ["Playfair Display", "serif"]
+            },
+            "fontSize": {
+                "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                "title-lg": ["20px", {"lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #f5f1e6; }
+        .islamic-pattern {
+            background-image: url("https://www.transparenttextures.com/patterns/pinstriped-suit.png");
+            opacity: 0.05;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(115, 92, 0, 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(6, 78, 59, 0.7), rgba(6, 78, 59, 0.95));
+        }
+        .diamond-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #735c00, transparent);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+<!-- TopNavBar Mapping -->
+<nav class="docked full-width top-0 sticky z-50 bg-white/80 backdrop-blur-md border-b border-primary/5 shadow-sm h-20">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-max-width mx-auto h-full">
+<div class="font-headline-md text-headline-md font-bold text-primary italic">
+            Jamia Siddiqiyyah
+        </div>
+<div class="hidden md:flex space-x-10 items-center">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm uppercase tracking-widest font-semibold" href="#">Programs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm uppercase tracking-widest font-semibold" href="#">Scholarship</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm uppercase tracking-widest font-semibold" href="#">Donation</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-sm uppercase tracking-widest font-semibold" href="#">Legacy</a>
+</div>
+<div class="flex items-center space-x-6">
+<span class="text-on-surface-variant font-label-caps text-label-caps cursor-pointer hover:text-secondary transition-all">EN / UR</span>
+<button class="bg-primary text-on-primary px-8 py-2 rounded-lg font-bold hover:bg-opacity-90 transition-all active:scale-95">
+                Donate
+            </button>
+</div>
+</div>
+</nav>
+<!-- 1. Immersive Hero -->
+<header class="relative h-screen min-h-[800px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A grand, cinematic view of a majestic Islamic architectural courtyard at dusk. The scene features intricate arches and marble floors reflecting the warm, golden light of ornate hanging lanterns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwwPHuINgSaIk5znua8fHg4zxxU4QKG-QNr5HgHyz-sTdKt-OUc2XePLxzGOcB3DJtqOPHpbsCawagjn_z3JVddrZtkKGXWuVR-ApeoNTVAA9TjRi1_pWLixxAf38QyJZhdXrbco8lwEjNabPXdG7KKyzwEn4J2pHeTrXFBRcHPHLN4AZVJmL7D5OkTZ2-mr44U4jn13FeuioD0CTl2l7U9rUtMsZ9LVS57pgq-8Mt5raElveBivJStI2hL4RmmIJHok73eOIiBFuB"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 w-full px-margin-desktop max-w-max-width mx-auto text-white text-center md:text-left">
+<div class="max-w-4xl">
+<p class="font-label-caps text-label-caps text-secondary-fixed tracking-[0.3em] mb-6 opacity-90">THE CUSTODIANS OF SACRED HERITAGE</p>
+<h1 class="font-display-lg text-display-lg mb-8 leading-[1.1] italic">Upholding the Unbroken Legacy of Knowledge &amp; Spiritual Excellence</h1>
+<div class="flex flex-col md:flex-row gap-6 mb-16">
+<button class="bg-primary-fixed text-primary px-10 py-5 rounded-lg font-bold text-lg hover:shadow-lg transition-all border border-primary-fixed">Support the Mission</button>
+<button class="border border-white/40 backdrop-blur-sm px-10 py-5 rounded-lg font-bold text-lg hover:bg-white/10 transition-all">Sponsor a Seeker</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-white/20 pt-12">
+<div>
+<span class="block font-headline-lg text-headline-lg text-secondary-fixed mb-1" id="count-students">5000+</span>
+<span class="font-label-caps opacity-70 tracking-widest text-[10px]">CURRENT STUDENTS</span>
+</div>
+<div>
+<span class="block font-headline-lg text-headline-lg text-secondary-fixed mb-1" id="count-scholars">70+</span>
+<span class="font-label-caps opacity-70 tracking-widest text-[10px]">SENIOR MASTERS</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- 2. Quran & Hadith Inspiration -->
+<section class="py-32 bg-background relative -mt-20 z-20 rounded-t-[3rem]">
+<div class="islamic-pattern absolute inset-0 rounded-t-[3rem]"></div>
+<div class="max-w-max-width mx-auto px-margin-desktop relative z-10">
+<div class="text-center mb-24">
+<span class="material-symbols-outlined text-primary text-5xl mb-6">history_edu</span>
+<h2 class="font-headline-lg text-headline-lg text-primary italic">Foundation of the Legacy</h2>
+<div class="diamond-divider w-32 mx-auto mt-6"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Manuscript Card 1 -->
+<div class="glass-card p-14 relative group hover:shadow-2xl transition-all duration-700 rounded-xl">
+<div class="absolute top-0 right-0 p-6 opacity-5 font-serif text-8xl text-primary">﷽</div>
+<p class="text-right font-headline-md text-headline-md text-primary mb-10 leading-relaxed italic" dir="rtl">
+                    إِنَّ هَٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ
+                </p>
+<p class="font-body-lg text-body-lg italic text-on-surface-variant mb-6 border-l-2 border-primary/20 pl-6">
+                    "Verily, this Quran guides to that which is most upright."
+                </p>
+<p class="font-label-caps text-label-caps text-primary/60 tracking-widest uppercase">[Surah Al-Isra 17:9]</p>
+</div>
+<!-- Manuscript Card 2 -->
+<div class="glass-card p-14 relative group hover:shadow-2xl transition-all duration-700 rounded-xl">
+<div class="absolute top-0 right-0 p-6 opacity-5 font-serif text-8xl text-primary">ﷺ</div>
+<p class="text-right font-headline-md text-headline-md text-primary mb-10 leading-relaxed italic" dir="rtl">
+                    خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ
+                </p>
+<p class="font-body-lg text-body-lg italic text-on-surface-variant mb-6 border-l-2 border-primary/20 pl-6">
+                    "The best of you are those who learn the Quran and teach it."
+                </p>
+<p class="font-label-caps text-label-caps text-primary/60 tracking-widest uppercase">[Sahih Al-Bukhari]</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Global Impact Dashboard -->
+<section class="py-24 bg-primary text-on-primary relative overflow-hidden">
+<div class="islamic-pattern absolute inset-0"></div>
+<div class="max-w-max-width mx-auto px-margin-desktop relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter text-center">
+<div class="p-10 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm shadow-xl">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl mb-4">school</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2 italic">5,240</h3>
+<p class="font-label-caps opacity-60 tracking-[0.2em] text-[10px]">TOTAL ALUMNI</p>
+</div>
+<div class="p-10 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm shadow-xl">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl mb-4">menu_book</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2 italic">12</h3>
+<p class="font-label-caps opacity-60 tracking-[0.2em] text-[10px]">FACULTIES</p>
+</div>
+<div class="p-10 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm shadow-xl">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl mb-4">public</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2 italic">15</h3>
+<p class="font-label-caps opacity-60 tracking-[0.2em] text-[10px]">COUNTRIES</p>
+</div>
+<div class="p-10 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm shadow-xl">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl mb-4">volunteer_activism</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2 italic">850</h3>
+<p class="font-label-caps opacity-60 tracking-[0.2em] text-[10px]">FULL SCHOLARSHIPS</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Why Jamia Siddiqiyyah -->
+<section class="py-32 bg-background overflow-hidden">
+<div class="max-w-max-width mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row items-end justify-between mb-24 gap-8">
+<div class="max-w-2xl">
+<span class="text-primary font-label-caps tracking-widest block mb-4">ESTABLISHED TRADITION</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6 italic">A Synthesis of Tradition &amp; Excellence</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">For over three decades, we have remained committed to providing an authentic environment where academic rigor meets spiritual purification, preserving the sacred chain of scholarship.</p>
+</div>
+<div class="diamond-divider flex-1 hidden md:block mx-12 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<div class="p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-primary/5 -translate-y-4">
+<div class="w-16 h-16 bg-primary/5 flex items-center justify-center rounded-full mb-10 border border-primary/10">
+<span class="material-symbols-outlined text-primary text-3xl">verified</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-4 text-primary italic">Authentic Scholarship</h4>
+<p class="text-on-surface-variant leading-relaxed">Direct transmission of knowledge through unbroken chains (Isnad) reaching back to the Final Messenger ﷺ.</p>
+</div>
+<div class="p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-primary/5">
+<div class="w-16 h-16 bg-primary/5 flex items-center justify-center rounded-full mb-10 border border-primary/10">
+<span class="material-symbols-outlined text-primary text-3xl">psychology</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-4 text-primary italic">Spiritual Legacy</h4>
+<p class="text-on-surface-variant leading-relaxed">Focus on Tazkiyah (spiritual purification) and Adab to produce leaders of exemplary character and conduct.</p>
+</div>
+<div class="p-12 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-primary/5 translate-y-4">
+<div class="w-16 h-16 bg-primary/5 flex items-center justify-center rounded-full mb-10 border border-primary/10">
+<span class="material-symbols-outlined text-primary text-3xl">language</span>
+</div>
+<h4 class="font-title-lg text-title-lg mb-4 text-primary italic">Global Impact</h4>
+<p class="text-on-surface-variant leading-relaxed">Preparing students to articulate timeless Islamic values in the modern world across all cultural boundaries.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Scholar Showcase -->
+<section class="py-32 bg-surface-container-low relative">
+<div class="max-w-max-width mx-auto px-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg text-primary text-center mb-24 italic">The Guardians of Knowledge</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Scholar 1 -->
+<div class="group relative bg-white p-4 rounded-xl shadow-md">
+<div class="aspect-[4/5] overflow-hidden rounded-lg mb-8 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="Senior Islamic scholar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALV4n9aA6EU-yLyTKIaN8w0_igqJDWwqkXzKXBM7O6Qvf72Se8_v6-2WVgjKngl9yw0zbhoScSE1qF-cGzcZRSXKWjhnBYI0NY3WOtUAX_D3TL6kmnA62l8XuKoqOCdJu7yh5BFXUlOrEBtdhMNeOO7Sps8NdIcj6t9_HSTNIXVCMTlDSAHvGv1QVMCcmvlds2ogadYccVthC2BQzczZT4aTy9YkCYZVwTqrzgfjqlLWVCC2ps6wl0WbfD7dqMVoMhuSXmi0sGGzvb"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-10">
+<p class="text-white text-sm font-body-md leading-relaxed italic">Specialist in Usul al-Fiqh and Contemporary Legal issues with 40 years of teaching experience.</p>
+</div>
+</div>
+<div class="text-center pb-4">
+<h4 class="font-title-lg text-title-lg text-primary italic">Shaykh Al-Hadith</h4>
+<p class="text-secondary font-label-caps text-[10px] tracking-widest mt-2">HEAD OF ACADEMICS</p>
+</div>
+</div>
+<!-- Scholar 2 -->
+<div class="group relative bg-white p-4 rounded-xl shadow-md">
+<div class="aspect-[4/5] overflow-hidden rounded-lg mb-8 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="Contemporary scholar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsKz-GS-jIcTxgtll766pkFzWc_3h2xAxXo3LFXw6i3EdfpEWeGvl1h5-HumzXFxg30XpBRwp2idHA0sjU80VMgECQ6gpHDJntDMtfw2UHq4in-lTNo_6Ec66t2udpNUVzCAToe063o-ulwYU8tV5UmPK6JJOwu4F7XApjXJUH-ZcpLnFrWkTQNk91Nx7vns78Sbx-O4oa570pvvZqIKxbGC2EhUkTeSxq5t7_gl3WI--IIHArSabpptkBMU6zewrD_LOJfjDBKdPe"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-10">
+<p class="text-white text-sm font-body-md leading-relaxed italic">Masters in Arabic Linguistics and Tafsir Literature from world-renowned institutions.</p>
+</div>
+</div>
+<div class="text-center pb-4">
+<h4 class="font-title-lg text-title-lg text-primary italic">Dr. Abdullah Siddiqui</h4>
+<p class="text-secondary font-label-caps text-[10px] tracking-widest mt-2">LITURGICAL RESEARCH</p>
+</div>
+</div>
+<!-- Scholar 3 -->
+<div class="group relative bg-white p-4 rounded-xl shadow-md">
+<div class="aspect-[4/5] overflow-hidden rounded-lg mb-8 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="Traditional scholar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyVC-tuUeu_KonzHSI04eXXgBKZqkb6iDbFffyGn9x7OBqocUrPnedGcvQ5Ls09DrORUeeCU6CtE1EqycAY4ioExdEPDKDmGNz4x81fuvhaT2bYtOtlVlTdHI5wK_dlYsxpByqOgqzGWuX4981f46bBhcadTZl-LMNrnHdxbYz42Wgr9TJoQPh7hM-Doi8SjjogZTJlaFtx13DzT0UiaXsmEVTQOQRayZYbqnygKosKwZq66Zn6i43lIQX0aTEzA3IAqJ7tr3Y5wpu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-10">
+<p class="text-white text-sm font-body-md leading-relaxed italic">Leading expert in Islamic History and the preservation of ancient manuscripts.</p>
+</div>
+</div>
+<div class="text-center pb-4">
+<h4 class="font-title-lg text-title-lg text-primary italic">Ustad Murtaza Ali</h4>
+<p class="text-secondary font-label-caps text-[10px] tracking-widest mt-2">DEAN OF ARABIC</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Academic Programs -->
+<section class="py-32 bg-background relative z-10">
+<div class="max-w-max-width mx-auto px-margin-desktop">
+<div class="text-center mb-24">
+<h2 class="font-headline-lg text-headline-lg text-primary italic">Sacred Curricula</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mt-4">Curated academic pathways designed to cultivate profound mastery of the sacred sciences.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="group bg-white rounded-2xl p-10 hover:bg-primary transition-all duration-700 cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-2 border border-primary/5">
+<span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary-fixed mb-8">auto_stories</span>
+<h5 class="font-title-lg text-title-lg text-primary group-hover:text-white mb-4 italic">Hifz al-Quran</h5>
+<p class="text-on-surface-variant group-hover:text-white/70 mb-10 leading-relaxed">Memorisaton with precision Tajweed and linguistic foundations.</p>
+<button class="text-primary group-hover:text-secondary-fixed font-bold flex items-center gap-2 uppercase tracking-widest text-xs">Enroll <span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+<div class="group bg-white rounded-2xl p-10 hover:bg-primary transition-all duration-700 cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-2 border border-primary/5">
+<span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary-fixed mb-8">menu_book</span>
+<h5 class="font-title-lg text-title-lg text-primary group-hover:text-white mb-4 italic">Dars-e-Nizami</h5>
+<p class="text-on-surface-variant group-hover:text-white/70 mb-10 leading-relaxed">Comprehensive 8-year scholar course covering all major sciences.</p>
+<button class="text-primary group-hover:text-secondary-fixed font-bold flex items-center gap-2 uppercase tracking-widest text-xs">Enroll <span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+<div class="group bg-white rounded-2xl p-10 hover:bg-primary transition-all duration-700 cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-2 border border-primary/5">
+<span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary-fixed mb-8">translate</span>
+<h5 class="font-title-lg text-title-lg text-primary group-hover:text-white mb-4 italic">Arabic Arts</h5>
+<p class="text-on-surface-variant group-hover:text-white/70 mb-10 leading-relaxed">Deep immersion into Balaghah, Sarf, Nahw, and Literature.</p>
+<button class="text-primary group-hover:text-secondary-fixed font-bold flex items-center gap-2 uppercase tracking-widest text-xs">Enroll <span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+<div class="group bg-white rounded-2xl p-10 hover:bg-primary transition-all duration-700 cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-2 border border-primary/5">
+<span class="material-symbols-outlined text-5xl text-primary group-hover:text-secondary-fixed mb-8">balance</span>
+<h5 class="font-title-lg text-title-lg text-primary group-hover:text-white mb-4 italic">Ifta Specialization</h5>
+<p class="text-on-surface-variant group-hover:text-white/70 mb-10 leading-relaxed">Advanced postgraduate study in Islamic Jurisprudence and Fatawa.</p>
+<button class="text-primary group-hover:text-secondary-fixed font-bold flex items-center gap-2 uppercase tracking-widest text-xs">Enroll <span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Sponsor a Student (Impact Calculator) -->
+<section class="py-32 bg-primary text-white overflow-hidden relative">
+<div class="absolute inset-0 opacity-10 islamic-pattern"></div>
+<div class="max-w-max-width mx-auto px-margin-desktop relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-10 italic">Secure Your Ongoing Reward</h2>
+<p class="font-body-lg text-body-lg text-white/80 mb-12">By sponsoring a seeker of knowledge, you enable the preservation of the Sacred Legacy. Your contribution covers tuition, room, board, and health care.</p>
+<div class="space-y-8">
+<div class="bg-white/10 p-8 rounded-xl border border-white/20 backdrop-blur-sm">
+<label class="block font-label-caps mb-6 tracking-widest opacity-60">SELECT CONTRIBUTION PLAN</label>
+<div class="grid grid-cols-3 gap-4">
+<button class="impact-btn py-5 bg-primary-fixed text-primary rounded-lg font-bold transition-all" onclick="updateImpact(50)">Monthly</button>
+<button class="impact-btn py-5 bg-white/10 rounded-lg font-bold border border-white/10 hover:bg-white/20 transition-all" onclick="updateImpact(300)">Semiannual</button>
+<button class="impact-btn py-5 bg-white/10 rounded-lg font-bold border border-white/10 hover:bg-white/20 transition-all" onclick="updateImpact(600)">Annual</button>
+</div>
+</div>
+<div class="text-center md:text-left">
+<p class="text-4xl font-headline-md text-secondary-fixed mb-4 italic" id="impact-text">Supports 1 student for 1 month</p>
+<p class="text-white/60 italic">"When a human being dies, his deeds end except for three: Ongoing charity..."</p>
+</div>
+</div>
+</div>
+<div class="bg-white p-12 rounded-2xl shadow-2xl border border-primary/10">
+<h4 class="font-headline-md text-headline-md text-primary mb-8 italic text-center">Sponsorship Registry</h4>
+<form class="space-y-6">
+<div>
+<label class="block text-primary/60 font-label-caps text-[10px] tracking-widest mb-2 uppercase">Your Full Name</label>
+<input class="w-full bg-surface-container-low border border-primary/10 rounded-lg p-4 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-on-surface" placeholder="e.g. Sulayman al-Farsi" type="text"/>
+</div>
+<div>
+<label class="block text-primary/60 font-label-caps text-[10px] tracking-widest mb-2 uppercase">Email Address</label>
+<input class="w-full bg-surface-container-low border border-primary/10 rounded-lg p-4 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-on-surface" placeholder="contact@example.com" type="email"/>
+</div>
+<div class="pt-6">
+<button class="w-full bg-primary text-white py-6 rounded-lg font-bold text-xl hover:shadow-xl hover:bg-opacity-90 transition-all">Begin My Sponsorship</button>
+<p class="text-center text-primary/40 text-[10px] mt-4 uppercase tracking-[0.2em]">Secure SSL Encrypted Transaction</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. Donation Center (Sanctuary Fund) -->
+<section class="py-32 bg-background">
+<div class="max-w-max-width mx-auto px-margin-desktop text-center mb-24">
+<h2 class="font-headline-lg text-headline-lg text-primary italic">The Sanctuary Fund</h2>
+<p class="text-on-surface-variant font-body-md mt-4 tracking-wide">Purify your wealth by investing in the eternal chain of Sacred Knowledge.</p>
+</div>
+<div class="max-w-5xl mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<div class="bg-white p-12 rounded-2xl shadow-lg border border-primary/5 text-center group hover:border-primary/40 hover:shadow-2xl transition-all cursor-pointer">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-all duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-3xl">savings</span>
+</div>
+<h6 class="font-title-lg text-title-lg text-primary mb-4 italic">Zakat</h6>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">Directly distributed to eligible seekers and orphans according to Shariah.</p>
+<div class="font-bold text-primary py-2 border-t border-primary/10 mt-2">$1,200 Raised Today</div>
+</div>
+<div class="bg-white p-12 rounded-2xl shadow-lg border border-primary/5 text-center group hover:border-primary/40 hover:shadow-2xl transition-all cursor-pointer -translate-y-4">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-all duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-3xl">favorite</span>
+</div>
+<h6 class="font-title-lg text-title-lg text-primary mb-4 italic">Sadaqah Jariyah</h6>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">Invest in the infrastructure and the eternal library of the Jamia.</p>
+<div class="font-bold text-primary py-2 border-t border-primary/10 mt-2">$3,450 Raised Today</div>
+</div>
+<div class="bg-white p-12 rounded-2xl shadow-lg border border-primary/5 text-center group hover:border-primary/40 hover:shadow-2xl transition-all cursor-pointer">
+<div class="w-16 h-16 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-primary transition-all duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-3xl">domain</span>
+</div>
+<h6 class="font-title-lg text-title-lg text-primary mb-4 italic">Campus Expansion</h6>
+<p class="text-on-surface-variant text-sm mb-8 leading-relaxed">Building new residential wings to accommodate more global students.</p>
+<div class="font-bold text-primary py-2 border-t border-primary/10 mt-2">$12,000 Raised Today</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Institutional Excellence Marquee -->
+<section class="py-32 bg-surface-container overflow-hidden border-y border-primary/5">
+<div class="text-center mb-20">
+<span class="font-label-caps text-primary tracking-[0.4em] block mb-4 uppercase text-[10px]">GLOBAL AFFILIATIONS</span>
+<h2 class="font-headline-lg text-headline-lg text-primary italic">Institutional Excellence</h2>
+</div>
+<div class="relative flex overflow-hidden">
+<div class="marquee-track space-x-12 px-12">
+<!-- Set 1 -->
+<div class="flex items-center justify-center space-x-12">
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Jamia Ashrafia Lahore" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcgZIiZthlO9yrIagozxG11lfcr6v7uH6FYa2wAwOZSAYR5q1h7odaSri46kBpaHWhexqwVjd98jDQL96touppwqdHp2qCPDWZEqViD9SBJ4tHy81dnN5QAq0XpouEPJ619S8eTwWqr8Zag7CTNiuCuM9ci39eVewdCMohZJs2FSqMR8DLWt83V5UsfzKf-b9xt5h7o60jGf9huxMOsH-8JR_uVLznj19IIe9Q8M98WnTks--wLRLPTkEmHVD8WUUMciMWzb4tQqwt"/>
+<span class="font-title-lg text-primary italic text-sm">Jamia Ashrafia Lahore</span>
+</div>
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Wifaq ul Madaris" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_TUbcnrVcEDGRj3OdbFmWanNAOh3pNXctBYtPpCEkTHAxCSV-h5zZYQaR5_1is2EpRbLrB3EkLpJr9WYB7XeVJKxNK7Gk4CQAfTcbclv0VOwDAqfta3vNfgrRuBUadS5ugFQXDCL5G1TpEcEf5MmQITJyZQXaioUfZ2sq5kdC0ZFxF3_Z7Dwl-8IYwhmEL_itl9JRQB8BTTZiTee3fbQBoG7nYspMxGGprJ_G2Iz1NShuEdubRR9-FXsyrq5Za3IDFq6AyfeFzU3y"/>
+<span class="font-title-lg text-primary italic text-sm">Wifaq ul Madaris</span>
+</div>
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Jamia Farooqia" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc-Wq61UT1DQttj6tmVgE4BLX4Ac7uW1Xn95lQW5FvFcO428pChXgl1fduWAFMf33GpjUcJCxt_XM8zB1UwZG_9r4YChpOhiznfNXjN4jZtxUJLX5n-8Pnm5tt2PX2vmjkDYDbiqpNsjZxMJMi2YxDAZ9zviCT40tbxT6wxUOqrnHKt4kaT8ra9rwWq-hxKoOicCVQ-dWrZqlLG6TlGUGc9oK5fkAe4mKzcLMKFXgqmKHI73aIDuWo22PC8E8tjmWUqGJLt_vU5W11"/>
+<span class="font-title-lg text-primary italic text-sm">Jamia Farooqia</span>
+</div>
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Al-Azhar University" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBspCLhkQj_g1kLAyAzvL996yd0BPWnl7_olBY42T6Zo71lQL_-M4OfBSVKuXfr6ZzqkFeZxh1yv98dlDxnnzJwRJc81YYllyKZ1l8oZ6aH7-feu9aXr2mCBrJkD3K69UdRgcxcjx89Xk0cqe1oVRPHiZL5l3EJbw3RoTn_HO6MymgcGSaobCC_90D4Vkh4g5DX2h_FvwsW6SaD7gV9mnLhF4myX86cNE0zDFqrcqPnf4DTTVLGsbGCSwsOTI415RZ-ofD7pFoyP5hC"/>
+<span class="font-title-lg text-primary italic text-sm">Al-Azhar University</span>
+</div>
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Darul Uloom Deoband" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0f5CXZ_pESohUaFtLxRF1A1JcyI0ECO1Un3ZKQObFeYW5eNNoORuRQv29bVrYzENC-831rpnxyNdSzs2vqB6yjSBQZWryaDm3Po57bKnuf0JwEgGDByXadXVrPBKTtw2-CMlGFpOSGIuF3gpowz36KMSpfcqRdav6JJde2f1SqBjB2q3JOcvZkbMwF8fgbFtzd9qF9N8kwIolAH-TQgn6-zn7ijfEVgA1wwU9q5GgIGPKcp5DlpAV26X5_NVR7_UFHcl0UrDb4eZn"/>
+<span class="font-title-lg text-primary italic text-sm">Darul Uloom Deoband</span>
+</div>
+</div>
+<!-- Set 2 (Repeat) -->
+<div class="flex items-center justify-center space-x-12">
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Jamia Ashrafia Lahore" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcgZIiZthlO9yrIagozxG11lfcr6v7uH6FYa2wAwOZSAYR5q1h7odaSri46kBpaHWhexqwVjd98jDQL96touppwqdHp2qCPDWZEqViD9SBJ4tHy81dnN5QAq0XpouEPJ619S8eTwWqr8Zag7CTNiuCuM9ci39eVewdCMohZJs2FSqMR8DLWt83V5UsfzKf-b9xt5h7o60jGf9huxMOsH-8JR_uVLznj19IIe9Q8M98WnTks--wLRLPTkEmHVD8WUUMciMWzb4tQqwt"/>
+<span class="font-title-lg text-primary italic text-sm">Jamia Ashrafia Lahore</span>
+</div>
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Wifaq ul Madaris" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_TUbcnrVcEDGRj3OdbFmWanNAOh3pNXctBYtPpCEkTHAxCSV-h5zZYQaR5_1is2EpRbLrB3EkLpJr9WYB7XeVJKxNK7Gk4CQAfTcbclv0VOwDAqfta3vNfgrRuBUadS5ugFQXDCL5G1TpEcEf5MmQITJyZQXaioUfZ2sq5kdC0ZFxF3_Z7Dwl-8IYwhmEL_itl9JRQB8BTTZiTee3fbQBoG7nYspMxGGprJ_G2Iz1NShuEdubRR9-FXsyrq5Za3IDFq6AyfeFzU3y"/>
+<span class="font-title-lg text-primary italic text-sm">Wifaq ul Madaris</span>
+</div>
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Jamia Farooqia" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc-Wq61UT1DQttj6tmVgE4BLX4Ac7uW1Xn95lQW5FvFcO428pChXgl1fduWAFMf33GpjUcJCxt_XM8zB1UwZG_9r4YChpOhiznfNXjN4jZtxUJLX5n-8Pnm5tt2PX2vmjkDYDbiqpNsjZxMJMi2YxDAZ9zviCT40tbxT6wxUOqrnHKt4kaT8ra9rwWq-hxKoOicCVQ-dWrZqlLG6TlGUGc9oK5fkAe4mKzcLMKFXgqmKHI73aIDuWo22PC8E8tjmWUqGJLt_vU5W11"/>
+<span class="font-title-lg text-primary italic text-sm">Jamia Farooqia</span>
+</div>
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Al-Azhar University" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBspCLhkQj_g1kLAyAzvL996yd0BPWnl7_olBY42T6Zo71lQL_-M4OfBSVKuXfr6ZzqkFeZxh1yv98dlDxnnzJwRJc81YYllyKZ1l8oZ6aH7-feu9aXr2mCBrJkD3K69UdRgcxcjx89Xk0cqe1oVRPHiZL5l3EJbw3RoTn_HO6MymgcGSaobCC_90D4Vkh4g5DX2h_FvwsW6SaD7gV9mnLhF4myX86cNE0zDFqrcqPnf4DTTVLGsbGCSwsOTI415RZ-ofD7pFoyP5hC"/>
+<span class="font-title-lg text-primary italic text-sm">Al-Azhar University</span>
+</div>
+<div class="flex flex-col items-center min-w-[280px] bg-white/50 p-8 rounded-xl backdrop-blur-sm border border-white/50">
+<img alt="Darul Uloom Deoband" class="h-20 w-auto mb-6 grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0f5CXZ_pESohUaFtLxRF1A1JcyI0ECO1Un3ZKQObFeYW5eNNoORuRQv29bVrYzENC-831rpnxyNdSzs2vqB6yjSBQZWryaDm3Po57bKnuf0JwEgGDByXadXVrPBKTtw2-CMlGFpOSGIuF3gpowz36KMSpfcqRdav6JJde2f1SqBjB2q3JOcvZkbMwF8fgbFtzd9qF9N8kwIolAH-TQgn6-zn7ijfEVgA1wwU9q5GgIGPKcp5DlpAV26X5_NVR7_UFHcl0UrDb4eZn"/>
+<span class="font-title-lg text-primary italic text-sm">Darul Uloom Deoband</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 10. Contact & Connect -->
+<section class="py-32 bg-background relative z-10">
+<div class="max-w-max-width mx-auto px-margin-desktop">
+<div class="bg-white rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row border border-primary/5">
+<div class="w-full md:w-1/2 p-20">
+<h2 class="font-headline-md text-headline-md text-primary mb-10 italic">Visit the Sanctuary</h2>
+<div class="space-y-10">
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+<div>
+<h6 class="font-bold text-primary mb-2 italic">Main Heritage Campus</h6>
+<p class="text-on-surface-variant leading-relaxed">123 Scholarly Road, Heritage District<br/>Madinah, KSA</p>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">call</span>
+<div>
+<h6 class="font-bold text-primary mb-2 italic">Global Support</h6>
+<p class="text-on-surface-variant leading-relaxed">+966 12 345 6789 (UR/AR)<br/>+44 20 7123 4567 (EN)</p>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<span class="material-symbols-outlined text-primary text-3xl">mail</span>
+<div>
+<h6 class="font-bold text-primary mb-2 italic">Heritage Inquiries</h6>
+<p class="text-on-surface-variant leading-relaxed">legacy@jamiasiddiqiyyah.org</p>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 h-96 md:h-auto min-h-[500px] relative">
+<img class="w-full h-full object-cover grayscale-[30%] opacity-90" data-alt="Campus map visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJLXxMFBmoOJpH9GJUn2FNieZepgO84u6mBBWRpqQ6Tr2_4tlvYwcctxoiRSXF_OS6plb9VMDmqjWNZpgqGbWJLePm50XC-Zu4YMQZFX3SyKbxz8J2F7cSItzJfPn1BnVlGFBNCp-wK4ylX4puauStAFk8zicwmH-ZRsprxvbFo7dfTKG9nE3-tKEylpLa-lBk75q-dKCsKDBK1_csodQ8rtWtkG_O4Ioc11tAA1z3UeQHNbYY1uK1TvNoqzs9-GdvnOypnP1kmJ_z"/>
+<div class="absolute inset-0 bg-primary/10"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Mapping -->
+<footer class="full-width py-24 bg-primary text-on-primary border-t border-white/10 relative overflow-hidden">
+<div class="islamic-pattern absolute inset-0"></div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-max-width mx-auto relative z-10">
+<div class="md:col-span-1">
+<div class="font-headline-md text-headline-md text-secondary-fixed mb-8 italic">Jamia Siddiqiyyah</div>
+<p class="text-on-primary/70 font-body-md text-body-md mb-10 leading-relaxed italic">Dedicated to the authentic transmission of sacred Islamic sciences and the preservation of our collective legacy for over 30 years.</p>
+</div>
+<div>
+<h6 class="text-white font-bold mb-8 uppercase tracking-[0.2em] text-[10px] opacity-60">ACADEMIC PATHS</h6>
+<ul class="space-y-4">
+<li><a class="text-on-primary/80 hover:text-white transition-all block text-sm" href="#">Academic Programs</a></li>
+<li><a class="text-on-primary/80 hover:text-white transition-all block text-sm" href="#">Senior Faculty</a></li>
+<li><a class="text-on-primary/80 hover:text-white transition-all block text-sm" href="#">Student Registry</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-white font-bold mb-8 uppercase tracking-[0.2em] text-[10px] opacity-60">RESOURCES</h6>
+<ul class="space-y-4">
+<li><a class="text-on-primary/80 hover:text-white transition-all block text-sm" href="#">Heritage Report</a></li>
+<li><a class="text-on-primary/80 hover:text-white transition-all block text-sm" href="#">Zakat Calculator</a></li>
+<li><a class="text-on-primary/80 hover:text-white transition-all block text-sm" href="#">Donation History</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-white font-bold mb-8 uppercase tracking-[0.2em] text-[10px] opacity-60">LEGAL &amp; CONTACT</h6>
+<ul class="space-y-4">
+<li><a class="text-on-primary/80 hover:text-white transition-all block text-sm" href="#">Privacy Guidelines</a></li>
+<li><a class="text-on-primary/80 hover:text-white transition-all block text-sm" href="#">Contact Registry</a></li>
+<li><a class="text-on-primary/80 hover:text-white transition-all block text-sm" href="#">Visit Inquiries</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-max-width mx-auto px-margin-desktop border-t border-white/5 mt-20 pt-10 text-center relative z-10">
+<p class="text-on-primary/40 text-[11px] uppercase tracking-[0.3em]">© 2024 Jamia Siddiqiyyah. Upholding the Sacred Chain of Scholarship.</p>
+</div>
+</footer>
+<script>
+    // Simple Impact Calculator Logic
+    function updateImpact(amount) {
+        const text = document.getElementById('impact-text');
+        const btns = document.querySelectorAll('.impact-btn');
+        
+        btns.forEach(btn</script></body></html>

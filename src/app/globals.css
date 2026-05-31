@@ -1,26 +1,120 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-primary: #004d40;
+  --color-secondary: #a38600;
+  --color-background-warm: #faf8f0;
+  --color-on-surface: #1b1c15;
+  --color-on-surface-variant: #404944;
+  --color-surface-dim: #dbdbcf;
+  --color-surface-container-highest: #e4e3d7;
+  --color-on-primary-fixed-variant: #0b513d;
+  --color-error-container: #ffdad6;
+  --color-on-secondary-fixed-variant: #574500;
+  --color-inverse-on-surface: #f2f1e5;
+  --color-surface-bright: #f5f1e6;
+  --color-surface-container: #ece8db;
+  --color-inverse-primary: #95d3ba;
+  --color-surface-container-low: #f0ede0;
+  --color-on-primary-container: #80bea6;
+  --color-secondary-container: #fed65b;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-secondary-fixed: #241a00;
+  --color-tertiary-fixed-dim: #bdc7d9;
+  --color-surface-container-high: #e4e0d2;
+  --color-surface-variant: #e4e3d7;
+  --color-on-tertiary-fixed: #121c2a;
+  --color-tertiary: #252f3d;
+  --color-on-tertiary: #ffffff;
+  --color-secondary-fixed-dim: #e9c349;
+  --color-error: #ba1a1a;
+  --color-on-background: #1b1c15;
+  --color-inverse-surface: #303129;
+  --color-secondary-fixed: #ffe088;
+  --color-on-secondary: #ffffff;
+  --color-tertiary-fixed: #d9e3f6;
+  --color-surface-tint: #2b6954;
+  --color-on-tertiary-container: #a8b2c4;
+  --color-tertiary-container: #3b4554;
+  --color-surface: #f5f1e6;
+  --color-on-error-container: #93000a;
+  --color-on-primary-fixed: #002117;
+  --color-outline: #707974;
+  --color-on-secondary-container: #745c00;
+  --color-outline-variant: #bfc9c3;
+  --color-primary-fixed: #b0f0d6;
+  --color-on-tertiary-fixed-variant: #3d4756;
+  --color-on-surface-variant: #404944;
+  --color-primary-container: #064e3b;
+  
+  --font-display: var(--font-display), serif;
+  --font-sans: var(--font-sans), sans-serif;
+  
+  --radius-custom-soft: 0.25rem;
+  --radius-custom-card: 0.75rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fbfaee;
+  color: #1b1c15;
+  font-family: var(--font-sans);
+  font-weight: 500; /* base body weight lifted from 400 → 500 */
 }
+
+/* Paragraphs & descriptive copy — medium weight so they never look thin */
+p {
+  font-weight: 500;
+}
+
+/* Small caps/label spans — always bold */
+span.uppercase {
+  font-weight: 700;
+}
+
+/* Section sub-headings that use font-semibold — push to bold */
+.font-semibold {
+  font-weight: 700;
+}
+
+.islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z' fill='none' stroke='%23735c00' stroke-width='0.5' stroke-opacity='0.08'/%3E%3Cpath d='M30 15L45 30L30 45L15 30Z' fill='none' stroke='%23735c00' stroke-width='0.3' stroke-opacity='0.05'/%3E%3Ccircle cx='30' cy='30' r='5' fill='none' stroke='%23735c00' stroke-width='0.5' stroke-opacity='0.08'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(115, 92, 0, 0.12);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+}
+
+.hero-gradient {
+  background: linear-gradient(to bottom, rgba(0, 53, 39, 0.75), rgba(0, 53, 39, 0.96));
+}
+
+.diamond-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #735c00, transparent);
+}
+
+.mask-gradient {
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+html { scroll-behavior: smooth; }
