@@ -18,11 +18,11 @@ const items: GalleryItem[] = [
   { id: 3, title: "Central Library Corridor", category: "library", image: "/campus/WhatsApp Image 2026-06-01 at 16.38.59.jpeg", aspect: "aspect-[1/1]" },
   { id: 4, title: "Sanctuary Prayer Hall Arches", category: "campus", image: "/campus/WhatsApp Image 2026-06-01 at 16.39.15.jpeg", aspect: "aspect-[3/4]" },
   { id: 5, title: "Scholastic Lecture Wing", category: "campus", image: "/campus/WhatsApp Image 2026-06-01 at 16.44.41 (1).jpeg", aspect: "aspect-[4/3]" },
-  { id: 6, title: "Grand Arched Entrance", category: "campus", image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[4/3]" },
-  { id: 7, title: "Luminaries Study Hall", category: "library", image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[3/4]" },
-  { id: 8, title: "Traditional Scripting Studio", category: "arts", image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[1/1]" },
-  { id: 9, title: "Archival Manuscript Safe", category: "library", image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[4/3]" },
-  { id: 10, title: "Sacred Geometric Tiling Detail", category: "arts", image: "https://images.unsplash.com/photo-1590076211171-872f2e519280?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[4/3]" }
+  { id: 6, title: "The Holy Quran Recitation", category: "library", image: "https://images.unsplash.com/photo-1609599006353-e629f1d50b5f?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[4/3]" },
+  { id: 7, title: "Seeker Memorizing Prophetic Verses", category: "campus", image: "https://images.unsplash.com/photo-1598188306155-25e400eb5878?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[3/4]" },
+  { id: 8, title: "Intricate Islamic Architecture", category: "arts", image: "https://images.unsplash.com/photo-1597935258735-e254c1839512?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[1/1]" },
+  { id: 9, title: "Traditional Academic Arches", category: "campus", image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[3/4]" },
+  { id: 10, title: "Prophetic Sanctuary Minarets", category: "campus", image: "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[4/3]" }
 ];
 
 export default function CampusGallery() {
