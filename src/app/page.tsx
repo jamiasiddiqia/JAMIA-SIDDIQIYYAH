@@ -76,8 +76,8 @@ export default function Home() {
       setContactSuccess(true);
       setContactData({ name: "", email: "", message: "" });
       setTimeout(() => setContactSuccess(false), 5000);
-    } catch (err: any) {
-      setContactError(err.message || "Failed to send message.");
+    } catch (err: unknown) {
+      setContactError((err as Error).message || "Failed to send message.");
     } finally {
       setContactLoading(false);
     }
@@ -132,8 +132,8 @@ export default function Home() {
       {/* Top Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary/5 shadow-sm h-20 transition-all">
         <div className="flex justify-between items-center w-full px-6 md:px-20 max-w-7xl mx-auto h-full">
-          <div className="font-display text-lg md:text-xl font-semibold tracking-[0.2em] text-primary uppercase">
-            <Link href="/">Jamia Siddiqiyyah</Link>
+          <div className="font-display text-lg md:text-xl font-semibold tracking-[0.2em] text-primary uppercase cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            Jamia Siddiqiyyah
           </div>
 
           <div className="hidden lg:flex space-x-8 items-center">
@@ -341,7 +341,7 @@ export default function Home() {
               </p>
               <div className="p-6 bg-white border border-primary/5 rounded-xl glass-card">
                 <p className="font-display italic text-primary text-sm leading-relaxed">
-                  "Our mission is to maintain a pure environment where seekers of sacred sciences can access traditional mentorship and become leaders of spiritual guidance."
+                  &ldquo;Our mission is to maintain a pure environment where seekers of sacred sciences can access traditional mentorship and become leaders of spiritual guidance.&rdquo;
                 </p>
                 <span className="block text-[10px] text-secondary font-semibold tracking-wider uppercase mt-3">— Board of Trustees</span>
               </div>
@@ -474,7 +474,7 @@ export default function Home() {
               <span className="text-secondary-fixed font-semibold text-xs tracking-widest uppercase block">Online Learning Academy</span>
               <h2 className="font-display text-3xl md:text-4xl text-white italic font-bold">The Virtual Sanctuary</h2>
               <p className="text-white/70 text-sm leading-relaxed">
-                Can't join us in Medinah? Our premium online portal provides live interactive classes, structured homework tracks, and direct scheduling with master mentors.
+                Can&apos;t join us in Medinah? Our premium online portal provides live interactive classes, structured homework tracks, and direct scheduling with master mentors.
               </p>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center gap-2 text-white/90">
@@ -788,7 +788,7 @@ export default function Home() {
           
           <div className="bg-white border border-primary/5 rounded-2xl p-8 md:p-14 shadow-xl glass-card relative">
             <p className="font-display text-lg md:text-xl italic text-primary leading-relaxed">
-              "{testimonials[0].quote}"
+              &ldquo;{testimonials[0].quote}&rdquo;
             </p>
             <div className="mt-8">
               <span className="block font-bold text-primary text-sm">{testimonials[0].author}</span>

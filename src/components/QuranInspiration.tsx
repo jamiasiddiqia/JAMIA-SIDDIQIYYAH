@@ -68,13 +68,13 @@ export default function QuranInspiration() {
                 <div className="border-l-2 border-secondary/20 pl-4">
                   <span className="block text-[9px] font-bold text-secondary uppercase tracking-wider mb-1">English</span>
                   <p className="text-on-surface-variant text-sm md:text-base italic leading-relaxed">
-                    "{quotes[current].english}"
+                    &ldquo;{quotes[current].english}&rdquo;
                   </p>
                 </div>
                 <div className="border-l-2 border-secondary/20 pl-4 md:text-right md:border-l-0 md:border-r-2 md:pr-4 md:pl-0">
                   <span className="block text-[9px] font-bold text-secondary uppercase tracking-wider mb-1">Urdu</span>
                   <p className="text-on-surface-variant text-sm md:text-base font-normal leading-relaxed italic" dir="rtl">
-                    "{quotes[current].urdu}"
+                    &ldquo;{quotes[current].urdu}&rdquo;
                   </p>
                 </div>
               </div>
