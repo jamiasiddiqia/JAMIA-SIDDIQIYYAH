@@ -7,11 +7,35 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- ==========================================
 -- 1. TYPES & ENUMS
 -- ==========================================
-CREATE TYPE user_role AS ENUM ('super_admin', 'admin', 'editor', 'user');
-CREATE TYPE payment_status_type AS ENUM ('pending', 'completed', 'failed', 'refunded');
-CREATE TYPE course_level_type AS ENUM ('beginner', 'intermediate', 'advanced');
-CREATE TYPE enrollment_status_type AS ENUM ('open', 'closed', 'upcoming');
-CREATE TYPE contact_status_type AS ENUM ('new', 'read', 'archived', 'replied', 'resolved');
+DO $$ 
+BEGIN
+  CREATE TYPE user_role AS ENUM ('super_admin', 'admin', 'editor', 'user');
+EXCEPTION WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ 
+BEGIN
+  CREATE TYPE payment_status_type AS ENUM ('pending', 'completed', 'failed', 'refunded');
+EXCEPTION WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ 
+BEGIN
+  CREATE TYPE course_level_type AS ENUM ('beginner', 'intermediate', 'advanced');
+EXCEPTION WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ 
+BEGIN
+  CREATE TYPE enrollment_status_type AS ENUM ('open', 'closed', 'upcoming');
+EXCEPTION WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ 
+BEGIN
+  CREATE TYPE contact_status_type AS ENUM ('new', 'read', 'archived', 'replied', 'resolved');
+EXCEPTION WHEN duplicate_object THEN null;
+END $$;
 
 -- ==========================================
 -- 2. TABLES DEFINITIONS
