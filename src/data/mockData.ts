@@ -51,28 +51,20 @@ export interface FAQItem {
 
 export const scholars: Scholar[] = [
   {
-    name: "Shaykh Al-Hadith Maulana Habibullah",
-    title: "Grand Mufti & Dean of Hadith",
-    role: "HEAD OF ACADEMICS",
-    bio: "A renowned authority in Sahih al-Bukhari and comparative jurisprudence with over 42 years of teaching experience.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=500",
-    specialty: "Hadith & Usul al-Fiqh"
+    name: "Maulana Habibur Rehman",
+    title: "Owner & Patron-in-Chief of Jamia Siddiqiyyah",
+    role: "FOUNDER & OWNER",
+    bio: "The visionary founder and owner of Jamia Siddiqiyyah. Over three decades of steering the institution towards spiritual excellence, authentic transmission of sacred knowledge, and global community service.",
+    image: "/scholars/habib.jpeg",
+    specialty: "Sacred Patronage & Leadership"
   },
   {
-    name: "Dr. Abdullah Siddiqui",
-    title: "Director of Arabic Linguistics",
-    role: "LITURGICAL RESEARCH",
-    bio: "Holds a Ph.D. in Arabic Literature and Grammar from Al-Azhar University. Specializes in Quranic rhetoric and Balaghah.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=500",
-    specialty: "Classical Arabic Grammar"
-  },
-  {
-    name: "Ustad Murtaza Ali",
-    title: "Dean of Islamic History & Manuscripts",
-    role: "DEAN OF HERITAGE",
-    bio: "Dedicated archivist and researcher focusing on preservation of Ottoman and Abbasid-era manuscripts.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=500",
-    specialty: "Islamic History & Calligraphy"
+    name: "Mufti Fazal ur Rehman",
+    title: "Nazim-e-Aala (Director General)",
+    role: "ACADEMIC & ADMIN DIRECTOR",
+    bio: "A highly respected jurist and the Nazim-e-Aala of Jamia Siddiqiyyah. He directs the traditional Dars-e-Nizami curriculum, educational standards, and spiritual tazkiyah programs.",
+    image: "/scholars/fazal.jpeg",
+    specialty: "Islamic Jurisprudence & Administration"
   }
 ];
 

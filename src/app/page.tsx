@@ -86,6 +86,7 @@ export default function Home() {
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<string>("seeker");
   const [activeVideo, setActiveVideo] = useState<string>("tour");
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   // Counter animations using simple state interval on mount
   const [studentCount, setStudentCount] = useState(4800);
@@ -384,7 +385,7 @@ export default function Home() {
             <div className="diamond-divider w-32 mx-auto mt-4"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {scholars.map((scholar, idx) => (
               <div key={idx} className="group bg-white rounded-xl overflow-hidden border border-primary/5 shadow-md hover:shadow-xl transition-all duration-500">
                 <div className="aspect-[4/5] overflow-hidden relative">
@@ -720,26 +721,41 @@ export default function Home() {
 
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="w-full lg:w-2/3 aspect-video bg-primary rounded-2xl overflow-hidden relative border border-primary/15 shadow-xl flex items-center justify-center">
-              <img 
-                src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800" 
-                alt="Video preview background" 
-                className="absolute inset-0 w-full h-full object-cover opacity-60" 
-              />
-              <div className="absolute inset-0 bg-primary/20 hover:bg-primary/10 transition-colors"></div>
-              
-              <button className="relative z-10 w-20 h-20 bg-secondary text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all">
-                <Play className="w-8 h-8 fill-current ml-1" />
-              </button>
+              {isPlaying ? (
+                <video 
+                  src={activeVideo === "tour" ? "/campus/vid1.mp4" : "/campus/vid2.mp4"} 
+                  controls 
+                  autoPlay 
+                  className="w-full h-full object-cover rounded-2xl" 
+                />
+              ) : (
+                <>
+                  <img 
+                    src={activeVideo === "tour" ? "/campus/WhatsApp Image 2026-06-01 at 16.35.31.jpeg" : "/campus/WhatsApp Image 2026-06-01 at 16.39.15.jpeg"} 
+                    alt="Video preview background" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-60" 
+                  />
+                  <div className="absolute inset-0 bg-primary/20 hover:bg-primary/10 transition-colors"></div>
+                  
+                  <button 
+                    onClick={() => setIsPlaying(true)}
+                    className="relative z-10 w-20 h-20 bg-secondary text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-105 active:scale-95 transition-all cursor-pointer group"
+                  >
+                    <span className="absolute inset-0 rounded-full bg-secondary/30 animate-ping group-hover:animate-none"></span>
+                    <Play className="w-8 h-8 fill-current ml-1 relative z-10" />
+                  </button>
 
-              <div className="absolute bottom-6 left-6 text-white text-xs z-10 font-bold bg-primary/70 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
-                {activeVideo === "tour" ? "Virtual Campus Tour" : "Scholarship Graduation Day"}
-              </div>
+                  <div className="absolute bottom-6 left-6 text-white text-xs z-10 font-bold bg-primary/70 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
+                    {activeVideo === "tour" ? "Virtual Campus Tour" : "Scholarship Graduation Day"}
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="w-full lg:w-1/3 space-y-4">
               <button 
-                onClick={() => setActiveVideo("tour")}
-                className={`w-full p-6 text-left rounded-xl border transition-all flex gap-4 ${activeVideo === "tour" ? "bg-white border-secondary shadow-md" : "border-primary/5 hover:bg-white/40"}`}
+                onClick={() => { setActiveVideo("tour"); setIsPlaying(false); }}
+                className={`w-full p-6 text-left rounded-xl border transition-all flex gap-4 cursor-pointer ${activeVideo === "tour" ? "bg-white border-secondary shadow-md" : "border-primary/5 hover:bg-white/40"}`}
               >
                 <div className="w-10 h-10 bg-primary/5 rounded flex items-center justify-center text-primary shrink-0">
                   <Play className="w-4 h-4 fill-current" />
@@ -751,8 +767,8 @@ export default function Home() {
               </button>
 
               <button 
-                onClick={() => setActiveVideo("graduation")}
-                className={`w-full p-6 text-left rounded-xl border transition-all flex gap-4 ${activeVideo === "graduation" ? "bg-white border-secondary shadow-md" : "border-primary/5 hover:bg-white/40"}`}
+                onClick={() => { setActiveVideo("graduation"); setIsPlaying(false); }}
+                className={`w-full p-6 text-left rounded-xl border transition-all flex gap-4 cursor-pointer ${activeVideo === "graduation" ? "bg-white border-secondary shadow-md" : "border-primary/5 hover:bg-white/40"}`}
               >
                 <div className="w-10 h-10 bg-primary/5 rounded flex items-center justify-center text-primary shrink-0">
                   <Play className="w-4 h-4 fill-current" />
