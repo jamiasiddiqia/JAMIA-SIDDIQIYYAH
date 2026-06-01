@@ -58,22 +58,71 @@ body {
   background-color: #fbfaee;
   color: #1b1c15;
   font-family: var(--font-sans);
-  font-weight: 500; /* base body weight lifted from 400 → 500 */
+  font-weight: 400; /* refined body weight for exceptional readability and soothe */
+  line-height: 1.7; /* spacious line height for reading comfort */
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Paragraphs & descriptive copy — medium weight so they never look thin */
+/* Paragraphs & descriptive copy — clean, soothing, spacious */
 p {
-  font-weight: 500;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-on-surface-variant); /* elegant slate-teal for premium soothing visual contrast */
 }
 
-/* Small caps/label spans — always bold */
-span.uppercase {
-  font-weight: 700;
+/* Let's make sure strong/bold text stands out but remains elegant */
+strong, b {
+  font-weight: 600;
+  color: var(--color-primary);
 }
 
-/* Section sub-headings that use font-semibold — push to bold */
+/* Small caps/label spans — crisp, neat and legible */
+span.uppercase, .tracking-widest, .tracking-wider {
+  font-weight: 600;
+  letter-spacing: 0.08em !important;
+}
+
+/* Section sub-headings that use font-semibold — keep them elegant and distinct */
 .font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
   font-weight: 700;
+}
+
+/* Majestic typography refined for Cormorant Garamond display headings */
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+/* Global utility overrides for microscopic arbitrary values */
+/* This elegantly solves the tiny sizing readability issues across all components */
+.text-\[8px\] {
+  font-size: 10px !important;
+  letter-spacing: 0.06em !important;
+}
+
+.text-\[9px\] {
+  font-size: 11px !important;
+  letter-spacing: 0.05em !important;
+}
+
+.text-\[10px\] {
+  font-size: 12px !important;
+  letter-spacing: 0.03em !important;
+}
+
+.text-xs {
+  font-size: 0.8125rem !important; /* Bump from 12px to 13px for extra reading comfort */
+}
+
+.text-sm {
+  font-size: 0.9375rem !important; /* Bump from 14px to 15px for beautiful readability */
 }
 
 .islamic-pattern {
