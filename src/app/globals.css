@@ -54,50 +54,61 @@
   --radius-custom-card: 0.75rem;
 }
 
-body {
-  background-color: #fbfaee;
-  color: #1b1c15;
-  font-family: var(--font-sans);
-  font-weight: 400; /* refined body weight for exceptional readability and soothe */
-  line-height: 1.7; /* spacious line height for reading comfort */
-  letter-spacing: 0.01em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@layer base {
+  body {
+    background-color: #fbfaee;
+    color: #1b1c15;
+    font-family: var(--font-sans);
+    font-weight: 400; /* refined body weight for exceptional readability and soothe */
+    line-height: 1.7; /* spacious line height for reading comfort */
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-/* Paragraphs & descriptive copy — clean, soothing, spacious */
-p {
-  font-weight: 400;
-  line-height: 1.75;
-  color: var(--color-on-surface-variant); /* elegant slate-teal for premium soothing visual contrast */
-}
+  /* Paragraphs & descriptive copy — clean, soothing, spacious */
+  p {
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--color-on-surface-variant); /* elegant slate-teal for premium soothing visual contrast */
+  }
 
-/* Let's make sure strong/bold text stands out but remains elegant */
-strong, b {
-  font-weight: 600;
-  color: var(--color-primary);
-}
+  /* High contrast off-white text color for paragraphs inside dark containers */
+  .text-white p,
+  .bg-primary p,
+  [class*="bg-primary"] p,
+  header p,
+  footer p {
+    color: rgba(255, 255, 255, 0.8);
+  }
 
-/* Small caps/label spans — crisp, neat and legible */
-span.uppercase, .tracking-widest, .tracking-wider {
-  font-weight: 600;
-  letter-spacing: 0.08em !important;
-}
+  /* Let's make sure strong/bold text stands out but remains elegant */
+  strong, b {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
 
-/* Section sub-headings that use font-semibold — keep them elegant and distinct */
-.font-semibold {
-  font-weight: 600;
-}
+  /* Small caps/label spans — crisp, neat and legible */
+  span.uppercase, .tracking-widest, .tracking-wider {
+    font-weight: 600;
+    letter-spacing: 0.08em !important;
+  }
 
-.font-bold {
-  font-weight: 700;
-}
+  /* Section sub-headings that use font-semibold — keep them elegant and distinct */
+  .font-semibold {
+    font-weight: 600;
+  }
 
-/* Majestic typography refined for Cormorant Garamond display headings */
-h1, h2, h3, h4, h5, h6, .font-display {
-  font-family: var(--font-display);
-  letter-spacing: -0.015em;
-  line-height: 1.25;
+  .font-bold {
+    font-weight: 700;
+  }
+
+  /* Majestic typography refined for Cormorant Garamond display headings */
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+  }
 }
 
 /* Global utility overrides for microscopic arbitrary values */
