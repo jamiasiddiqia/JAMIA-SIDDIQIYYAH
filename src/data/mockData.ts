@@ -254,6 +254,6 @@ export const organizations = [
   {
     name: "University of Sharjah",
     nameArabic: "جامعة الشارقة",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e5/University_of_Sharjah_logo.svg",
+    logo: "/logo.png",
   },
 ];

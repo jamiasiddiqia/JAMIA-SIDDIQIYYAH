@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import { 
   BookOpen, 
@@ -422,9 +423,9 @@ export default function Home() {
                   <span className="text-[10px] text-secondary font-bold uppercase tracking-wider group-hover:text-secondary-fixed">
                     {prog.duration}
                   </span>
-                  <button className="text-primary group-hover:text-secondary-fixed font-bold uppercase tracking-wider text-[10px] flex items-center gap-1">
+                  <Link href={`/apply?course=${encodeURIComponent(prog.title)}`} className="text-primary group-hover:text-secondary-fixed font-bold uppercase tracking-wider text-[10px] flex items-center gap-1">
                     Apply <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
