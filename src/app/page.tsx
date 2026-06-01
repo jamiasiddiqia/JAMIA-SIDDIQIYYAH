@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
+import { supabase } from "@/lib/supabase";
 import { 
   BookOpen, 
   GraduationCap, 
@@ -52,6 +53,36 @@ import {
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [contactData, setContactData] = useState({ name: "", email: "", message: "" });
+  const [contactLoading, setContactLoading] = useState(false);
+  const [contactSuccess, setContactSuccess] = useState(false);
+  const [contactError, setContactError] = useState("");
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setContactLoading(true);
+    setContactError("");
+    try {
+      const { error } = await supabase.from("contacts").insert([
+        {
+          name: contactData.name,
+          email: contactData.email,
+          message: contactData.message,
+          status: "new"
+        }
+      ]);
+      if (error) throw error;
+      setContactSuccess(true);
+      setContactData({ name: "", email: "", message: "" });
+      setTimeout(() => setContactSuccess(false), 5000);
+    } catch (err: any) {
+      setContactError(err.message || "Failed to send message.");
+    } finally {
+      setContactLoading(false);
+    }
+  };
+
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
   const [selectedPlan, setSelectedPlan] = useState<string>("seeker");
   const [activeVideo, setActiveVideo] = useState<string>("tour");
@@ -102,7 +133,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary/5 shadow-sm h-20 transition-all">
         <div className="flex justify-between items-center w-full px-6 md:px-20 max-w-7xl mx-auto h-full">
           <div className="font-display text-lg md:text-xl font-semibold tracking-[0.2em] text-primary uppercase">
-            Jamia Siddiqiyyah
+            <Link href="/">Jamia Siddiqiyyah</Link>
           </div>
 
           <div className="hidden lg:flex space-x-8 items-center">
@@ -923,23 +954,27 @@ export default function Home() {
             </div>
 
             <div className="w-full md:w-1/2 p-10 md:p-16 bg-primary/5 border-l border-primary/5">
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+              <form onSubmit={handleContactSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label className="text-[9px] font-bold uppercase tracking-widest text-primary/60">Full Name</label>
-                    <input type="text" placeholder="Ibrahim" className="w-full bg-white border border-primary/10 rounded-lg p-3 text-xs outline-none focus:ring-1 focus:ring-primary" required />
+                    <input type="text" value={contactData.name} onChange={(e) => setContactData({...contactData, name: e.target.value})} placeholder="Ibrahim" className="w-full bg-white border border-primary/10 rounded-lg p-3 text-xs outline-none focus:ring-1 focus:ring-primary" required />
                   </div>
                   <div className="space-y-1.5">
                     <label className="text-[9px] font-bold uppercase tracking-widest text-primary/60">Email</label>
-                    <input type="email" placeholder="ibrahim@example.com" className="w-full bg-white border border-primary/10 rounded-lg p-3 text-xs outline-none focus:ring-1 focus:ring-primary" required />
+                    <input type="email" value={contactData.email} onChange={(e) => setContactData({...contactData, email: e.target.value})} placeholder="ibrahim@example.com" className="w-full bg-white border border-primary/10 rounded-lg p-3 text-xs outline-none focus:ring-1 focus:ring-primary" required />
                   </div>
                 </div>
                 <div className="space-y-1.5">
                   <label className="text-[9px] font-bold uppercase tracking-widest text-primary/60">Message</label>
-                  <textarea rows={4} placeholder="Your inquiry..." className="w-full bg-white border border-primary/10 rounded-lg p-3 text-xs outline-none focus:ring-1 focus:ring-primary resize-none" required></textarea>
+                  <textarea rows={4} value={contactData.message} onChange={(e) => setContactData({...contactData, message: e.target.value})} placeholder="Your inquiry..." className="w-full bg-white border border-primary/10 rounded-lg p-3 text-xs outline-none focus:ring-1 focus:ring-primary resize-none" required></textarea>
                 </div>
-                <button type="submit" className="w-full bg-primary text-white py-3.5 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-opacity-95 transition-all shadow-md">
-                  Send Inquiry
+                
+                {contactError && <div className="text-red-500 text-xs font-semibold">{contactError}</div>}
+                {contactSuccess && <div className="text-green-600 text-xs font-semibold">Message sent successfully! We will get back to you soon.</div>}
+
+                <button type="submit" disabled={contactLoading} className="w-full bg-primary text-white py-3.5 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-opacity-95 transition-all shadow-md disabled:opacity-70">
+                  {contactLoading ? "Sending..." : "Send Inquiry"}
                 </button>
               </form>
             </div>
