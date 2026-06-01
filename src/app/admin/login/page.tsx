@@ -1,10 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { Shield, Key, Mail, Loader2 } from "lucide-react";
 
 export default function AdminLogin() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,7 +18,7 @@ export default function AdminLogin() {
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        window.location.href = "/admin/dashboard";
+        router.push("/admin/dashboard");
       }
     };
     checkSession();
@@ -34,8 +36,13 @@ export default function AdminLogin() {
         password,
       });
 
+      // Authentication error – provide a clearer, user‑friendly message
       if (authError) {
-        setError(authError.message);
+        // Supabase returns generic messages; map common cases
+        const authMsg = authError.message?.includes('Invalid login credentials')
+          ? 'Invalid email or password.'
+          : authError.message;
+        setError(authMsg);
         setLoading(false);
         return;
       }
@@ -47,20 +54,20 @@ export default function AdminLogin() {
         .eq("id", data.user?.id)
         .single();
 
+      // Profile or role errors – inform the user they lack admin access
       if (profileError || !profile || !["super_admin", "admin", "editor"].includes(profile.role)) {
-        // Sign out unauthorized users
         await supabase.auth.signOut();
-        setError("Access Denied: Unauthorized role credentials.");
+        setError('Your account does not have admin access.');
         setLoading(false);
         return;
       }
 
-      setMessage("Authentication successful! Redirecting...");
+      setMessage('Authentication successful! Redirecting...');
       setTimeout(() => {
-        window.location.href = "/admin/dashboard";
+        router.push('/admin/dashboard');
       }, 1000);
     } catch (err: any) {
-      setError(err?.message || "An unexpected authentication error occurred.");
+      setError(err?.message || 'An unexpected authentication error occurred.');
       setLoading(false);
     }
   };

@@ -158,7 +158,7 @@ export default function Home() {
       </nav>
 
       {/* 1. Fullscreen Hero Section */}
-      <header className="relative min-h-[90vh] md:min-h-screen flex flex-col justify-center overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28">
+        <header className="relative min-h-[90vh] md:min-h-screen flex flex-col justify-center overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28 rounded-r-3xl border-r-4 border-primary/70" style={{boxShadow: '0 0 12px #00ffea'}}>
         <div className="absolute inset-0 z-0">
           <img 
             className="w-full h-full object-cover" 
@@ -406,14 +406,16 @@ export default function Home() {
                     )}
                   </div>
 
-                  <div className="space-y-2">
-                    <h4 className="font-display text-lg font-bold text-primary group-hover:text-white italic transition-colors">
-                      {prog.title}
-                    </h4>
-                    <p className="text-on-surface-variant group-hover:text-white/70 text-xs leading-relaxed transition-colors">
-                      {prog.description}
-                    </p>
-                  </div>
+                  <h4 className="font-display text-lg font-bold text-primary group-hover:text-white italic mb-2 transition-colors">{prog.title}</h4>
+                  <p className="text-on-surface-variant group-hover:text-white/70 text-xs leading-relaxed transition-colors">{prog.description}</p>
+                  <ul className="mt-4 space-y-1.5">
+                    {prog.curriculum.map((item, cIdx) => (
+                      <li key={cIdx} className="text-[11px] text-on-surface-variant/70 group-hover:text-white/60 flex items-start gap-2 transition-colors">
+                        <CheckCircle className="w-3 h-3 text-secondary group-hover:text-secondary-fixed shrink-0 mt-0.5" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <div className="mt-8 pt-4 border-t border-primary/5 group-hover:border-white/10 flex justify-between items-center text-xs">

@@ -227,7 +227,7 @@ export default function DashboardOverview() {
           </div>
 
           <button 
-            onClick={() => window.location.href = "/admin/dashboard/contacts"}
+            onClick={() => window.location.assign("/admin/dashboard/contacts")}
             className="w-full py-3.5 bg-primary/5 hover:bg-primary/10 text-primary border border-primary/10 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all text-center cursor-pointer"
           >
             Review Contact Inquiries

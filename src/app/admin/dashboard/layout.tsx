@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import { 
   Shield, 
@@ -27,6 +28,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const router = useRouter();
   const [sessionLoading, setSessionLoading] = useState(true);
   const [profile, setProfile] = useState<AdminProfile | null>(null);
   const [activeTab, setActiveTab] = useState("overview");
@@ -36,7 +39,7 @@ export default function DashboardLayout({
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {
-        window.location.href = "/admin/login";
+        router.push("/admin/login");
         return;
       }
 
@@ -49,7 +52,7 @@ export default function DashboardLayout({
 
       if (error || !data || !["super_admin", "admin", "editor"].includes(data.role)) {
         await supabase.auth.signOut();
-        window.location.href = "/admin/login";
+        router.push("/admin/login");
         return;
       }
 
@@ -58,11 +61,11 @@ export default function DashboardLayout({
     };
 
     checkAuth();
-  }, []);
+  }, [router]);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
-    window.location.href = "/admin/login";
+    router.push("/admin/login");
   };
 
   if (sessionLoading) {
@@ -119,7 +122,7 @@ export default function DashboardLayout({
                   href={item.path}
                   onClick={() => setActiveTab(item.id)}
                   className={`w-full flex items-center justify-between p-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
-                    window.location.pathname === item.path || (item.id === "overview" && window.location.pathname === "/admin/dashboard")
+                    pathname === item.path || (item.id === "overview" && pathname === "/admin/dashboard")
                       ? "bg-secondary-fixed text-primary shadow-md"
                       : "text-white/70 hover:bg-white/5 hover:text-white"
                   }`}

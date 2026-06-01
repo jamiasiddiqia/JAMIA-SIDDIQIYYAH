@@ -23,7 +23,7 @@ export default function CMSManager() {
   const [updatingKey, setUpdatingKey] = useState<string | null>(null);
   const [message, setMessage] = useState("");
 
-  const defaultCMSConfigs = [
+  const defaultCMSConfigs: CMSConfig[] = [
     {
       key: "homepage.hero",
       content: {
