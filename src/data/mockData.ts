@@ -55,7 +55,7 @@ export const scholars: Scholar[] = [
     title: "Owner & Patron-in-Chief of Jamia Siddiqiyyah",
     role: "FOUNDER & OWNER",
     bio: "The visionary founder and owner of Jamia Siddiqiyyah. Over three decades of steering the institution towards spiritual excellence, authentic transmission of sacred knowledge, and global community service.",
-    image: "/scholars/habib.jpeg",
+    image: "/scholars/habib.png",
     specialty: "Sacred Patronage & Leadership"
   },
   {
@@ -63,7 +63,7 @@ export const scholars: Scholar[] = [
     title: "Nazim-e-Aala (Director General)",
     role: "ACADEMIC & ADMIN DIRECTOR",
     bio: "A highly respected jurist and the Nazim-e-Aala of Jamia Siddiqiyyah. He directs the traditional Dars-e-Nizami curriculum, educational standards, and spiritual tazkiyah programs.",
-    image: "/scholars/fazal.jpeg",
+    image: "/scholars/fazal.png",
     specialty: "Islamic Jurisprudence & Administration"
   }
 ];
