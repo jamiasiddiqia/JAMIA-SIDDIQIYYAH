@@ -18,11 +18,26 @@ const items: GalleryItem[] = [
   { id: 3, title: "Central Library Corridor", category: "library", image: "/campus/WhatsApp Image 2026-06-01 at 16.38.59.jpeg", aspect: "aspect-[1/1]" },
   { id: 4, title: "Sanctuary Prayer Hall Arches", category: "campus", image: "/campus/WhatsApp Image 2026-06-01 at 16.39.15.jpeg", aspect: "aspect-[3/4]" },
   { id: 5, title: "Scholastic Lecture Wing", category: "campus", image: "/campus/WhatsApp Image 2026-06-01 at 16.44.41 (1).jpeg", aspect: "aspect-[4/3]" },
-  { id: 6, title: "The Holy Quran Recitation", category: "library", image: "https://images.unsplash.com/photo-1609599006353-e629f1d50b5f?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[4/3]" },
-  { id: 7, title: "Seeker Memorizing Prophetic Verses", category: "campus", image: "https://images.unsplash.com/photo-1598188306155-25e400eb5878?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[3/4]" },
-  { id: 8, title: "Intricate Islamic Architecture", category: "arts", image: "https://images.unsplash.com/photo-1597935258735-e254c1839512?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[1/1]" },
-  { id: 9, title: "Traditional Academic Arches", category: "campus", image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[3/4]" },
-  { id: 10, title: "Prophetic Sanctuary Minarets", category: "campus", image: "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&q=80&w=600", aspect: "aspect-[4/3]" }
+  { id: 6, title: "Siddiqiyyah Entrance Gate", category: "campus", image: "/campus/IMG_2000.JPG", aspect: "aspect-[4/3]" },
+  { id: 7, title: "Traditional Study Halqa", category: "campus", image: "/campus/IMG_2032.JPG", aspect: "aspect-[3/4]" },
+  { id: 8, title: "Ancient Manuscripts Archive", category: "library", image: "/campus/IMG_2033.JPG", aspect: "aspect-[1/1]" },
+  { id: 9, title: "Symmetric Arch Architecture", category: "arts", image: "/campus/IMG_2054.JPG", aspect: "aspect-[3/4]" },
+  { id: 10, title: "Peaceful Courtyard Oasis", category: "campus", image: "/campus/IMG_2055.JPG", aspect: "aspect-[4/3]" },
+  { id: 11, title: "Sacred Quranic Inscriptions", category: "arts", image: "/campus/IMG_2057.JPG", aspect: "aspect-[4/3]" },
+  { id: 12, title: "Grand Library Dome", category: "library", image: "/campus/IMG_2071.JPG", aspect: "aspect-[3/4]" },
+  { id: 13, title: "Intricate Mihrab Details", category: "arts", image: "/campus/IMG_2073.JPG", aspect: "aspect-[1/1]" },
+  { id: 14, title: "Evening Sanctuary Vista", category: "campus", image: "/campus/IMG_2080.JPG", aspect: "aspect-[4/3]" },
+  { id: 15, title: "Classical Literature Hall", category: "library", image: "/campus/IMG_2094.JPG", aspect: "aspect-[3/4]" },
+  { id: 16, title: "Floral Islamic Motifs", category: "arts", image: "/campus/IMG_2097.JPG", aspect: "aspect-[1/1]" },
+  { id: 17, title: "Seekers of Sacred Sciences", category: "campus", image: "/campus/IMG_2107.JPG", aspect: "aspect-[3/4]" },
+  { id: 18, title: "Central Library Study Wing", category: "library", image: "/campus/IMG_2108.JPG", aspect: "aspect-[4/3]" },
+  { id: 19, title: "Arabic Calligraphy Gallery", category: "arts", image: "/campus/IMG_2109.JPG", aspect: "aspect-[4/3]" },
+  { id: 20, title: "Sunlit Courtyard Arcades", category: "campus", image: "/campus/IMG_2110.JPG", aspect: "aspect-[3/4]" },
+  { id: 21, title: "Hadith Reference Library", category: "library", image: "/campus/IMG_2111.JPG", aspect: "aspect-[1/1]" },
+  { id: 22, title: "Geometry of the Minaret", category: "arts", image: "/campus/IMG_2112.JPG", aspect: "aspect-[3/4]" },
+  { id: 23, title: "Dawn Prayer Gathering", category: "campus", image: "/campus/IMG_2113.JPG", aspect: "aspect-[4/3]" },
+  { id: 24, title: "Islamic Fiqh Research Desk", category: "library", image: "/campus/IMG_2132.JPG", aspect: "aspect-[3/4]" },
+  { id: 25, title: "Sacred Adab & Etiquette Class", category: "campus", image: "/campus/IMG_2133.JPG", aspect: "aspect-[1/1]" }
 ];
 
 export default function CampusGallery() {
