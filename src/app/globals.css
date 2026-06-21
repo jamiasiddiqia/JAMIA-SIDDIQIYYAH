@@ -59,18 +59,19 @@
     background-color: #fbfaee;
     color: #1b1c15;
     font-family: var(--font-sans);
-    font-weight: 400; /* refined body weight for exceptional readability and soothe */
-    line-height: 1.7; /* spacious line height for reading comfort */
-    letter-spacing: 0.01em;
+    font-weight: 400;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Paragraphs & descriptive copy — clean, soothing, spacious */
+  /* Paragraphs & descriptive copy */
   p {
     font-weight: 400;
-    line-height: 1.75;
-    color: var(--color-on-surface-variant); /* elegant slate-teal for premium soothing visual contrast */
+    line-height: 1.7;
+    letter-spacing: -0.005em;
+    color: var(--color-on-surface-variant);
   }
 
   /* High contrast off-white text color for paragraphs inside dark containers */
@@ -82,19 +83,18 @@
     color: rgba(255, 255, 255, 0.8);
   }
 
-  /* Let's make sure strong/bold text stands out but remains elegant */
+  /* Bold text */
   strong, b {
     font-weight: 600;
     color: var(--color-primary);
   }
 
-  /* Small caps/label spans — crisp, neat and legible */
+  /* Label spans */
   span.uppercase, .tracking-widest, .tracking-wider {
     font-weight: 600;
-    letter-spacing: 0.08em !important;
+    letter-spacing: 0.06em !important;
   }
 
-  /* Section sub-headings that use font-semibold — keep them elegant and distinct */
   .font-semibold {
     font-weight: 600;
   }
@@ -103,11 +103,12 @@
     font-weight: 700;
   }
 
-  /* Majestic typography refined for Cormorant Garamond display headings */
+  /* Playfair Display headings — clean, authoritative, not overly ornate */
   h1, h2, h3, h4, h5, h6, .font-display {
     font-family: var(--font-display);
-    letter-spacing: -0.015em;
-    line-height: 1.25;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    font-weight: 700;
   }
 }
 

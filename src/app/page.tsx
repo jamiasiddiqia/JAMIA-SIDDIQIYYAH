@@ -131,66 +131,106 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       
       {/* Top Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary/5 shadow-sm h-20 transition-all">
-        <div className="flex justify-between items-center w-full px-6 md:px-20 max-w-7xl mx-auto h-full">
-          <div className="font-display text-lg md:text-xl font-semibold tracking-[0.2em] text-primary uppercase cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-primary/10 shadow-sm transition-all">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 h-[68px] flex items-center justify-between gap-4">
+
+          {/* Logo */}
+          <div
+            className="font-display text-xl font-bold tracking-tight text-primary shrink-0 cursor-pointer select-none"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             Jamia Siddiqiyyah
           </div>
 
-          <div className="hidden lg:flex space-x-8 items-center">
-            <a href="#about" className="relative text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2 group">
-              About
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#programs" className="relative text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2 group">
-              Academics
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#scholars" className="relative text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2 group">
-              Scholars
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <Link href="/insights" className="relative text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2 group">
-              Islamic Insights
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
+          {/* Desktop Nav Links — xl and above */}
+          <div className="hidden xl:flex items-center gap-0.5">
+            {[
+              { href: "#about", label: "About" },
+              { href: "#programs", label: "Academics" },
+              { href: "#scholars", label: "Scholars" },
+              { href: "#sponsor", label: "Sponsor" },
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="relative px-3.5 py-2 text-[13.5px] font-medium text-on-surface-variant hover:text-primary transition-colors group"
+              >
+                {item.label}
+                <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full" />
+              </a>
+            ))}
+            <Link
+              href="/insights"
+              className="relative px-3.5 py-2 text-[13.5px] font-medium text-on-surface-variant hover:text-primary transition-colors group"
+            >
+              Insights
+              <span className="absolute bottom-1 left-3.5 right-3.5 h-[2px] bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-full" />
             </Link>
-            <a href="#sponsor" className="relative text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2 group">
-              Sponsor
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#donation" className="relative text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2 group">
-              Donation Center
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#campus" className="relative text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2 group">
-              Campus
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
+            <a
+              href="#donation"
+              className="ml-3 bg-primary text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-all active:scale-95"
+            >
+              Donate Now
             </a>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <a href="#donation" className="bg-primary text-white px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-opacity-95 transition-all shadow-sm active:scale-95">
+          {/* Tablet Nav — md to xl */}
+          <div className="hidden md:flex xl:hidden items-center gap-1">
+            <a href="#programs" className="px-3 py-2 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Academics</a>
+            <Link href="/insights" className="px-3 py-2 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Insights</Link>
+            <a href="#donation" className="ml-2 bg-primary text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-all active:scale-95">Donate</a>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
+
+          {/* Mobile — below md */}
+          <div className="flex md:hidden items-center gap-2">
+            <a href="#donation" className="bg-primary text-white px-4 py-2 rounded-lg text-xs font-semibold hover:bg-primary/90 transition-all">
               Donate
             </a>
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-primary hover:bg-primary/5 rounded-lg"
+              className="p-2 text-primary hover:bg-primary/5 rounded-lg transition-colors"
+              aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Mobile / Tablet Dropdown */}
         {mobileMenuOpen && (
-          <div className="absolute top-20 left-0 right-0 bg-white border-b border-primary/5 p-6 space-y-4 shadow-xl flex flex-col z-50 lg:hidden">
-            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">About</a>
-            <a href="#programs" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Academics</a>
-            <a href="#scholars" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Scholars</a>
-            <Link href="/insights" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Islamic Insights</Link>
-            <a href="#sponsor" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Sponsor</a>
-            <a href="#donation" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Donation Center</a>
-            <a href="#campus" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Campus</a>
+          <div className="xl:hidden bg-white border-t border-primary/5 shadow-lg">
+            <div className="max-w-7xl mx-auto px-6 py-3 flex flex-col">
+              {[
+                { href: "#about", label: "About" },
+                { href: "#programs", label: "Academics" },
+                { href: "#scholars", label: "Scholars" },
+                { href: "#sponsor", label: "Sponsor a Student" },
+                { href: "#campus", label: "Campus" },
+              ].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-2 py-3 text-[14px] font-medium text-on-surface-variant hover:text-primary border-b border-primary/5 last:border-0 transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
+              <Link
+                href="/insights"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-2 py-3 text-[14px] font-medium text-on-surface-variant hover:text-primary border-b border-primary/5 transition-colors"
+              >
+                Islamic Insights
+              </Link>
+            </div>
           </div>
         )}
       </nav>

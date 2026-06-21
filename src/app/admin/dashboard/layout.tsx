@@ -103,11 +103,11 @@ export default function DashboardLayout({
               <Shield className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="font-display font-bold text-base leading-tight italic">
+              <h2 className="font-display font-bold text-base leading-tight">
                 Jamia Siddiqiyyah
               </h2>
-              <span className="block text-[8px] text-white/50 tracking-widest font-extrabold uppercase">
-                Enterprise Portal
+              <span className="block text-[10px] text-white/50 tracking-widest font-semibold uppercase">
+                Admin Portal
               </span>
             </div>
           </div>
@@ -171,11 +171,11 @@ export default function DashboardLayout({
         {/* Header Ribbon */}
         <header className="h-20 border-b border-primary/5 bg-white/50 backdrop-blur-md px-10 flex items-center justify-between">
           <div>
-            <h3 className="font-display font-bold text-primary text-lg capitalize italic">
+            <h3 className="font-display font-bold text-primary text-lg">
               Welcome Back, {profile?.full_name.split(" ")[0]}
             </h3>
-            <p className="text-[10px] text-on-surface-variant/60 font-bold uppercase tracking-wider">
-              Portal Overview and System Performance Analytics
+            <p className="text-xs text-on-surface-variant/60 font-medium">
+              Portal Overview &amp; System Analytics
             </p>
           </div>
           <div className="flex items-center gap-4">

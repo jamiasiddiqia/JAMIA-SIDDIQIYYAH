@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
 // ── Fonts ────────────────────────────────────────────────────────────────
-const cormorantGaramond = Cormorant_Garamond({
+const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
   display: "swap",
   preload: true,
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["300", "400", "500", "600", "700", "800"],
@@ -473,7 +473,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorantGaramond.variable} ${plusJakarta.variable} scroll-smooth`}
+      className={`${playfairDisplay.variable} ${inter.variable} scroll-smooth`}
     >
       <head>
         {/* ── JSON-LD Structured Data ─────────────────────────────── */}
