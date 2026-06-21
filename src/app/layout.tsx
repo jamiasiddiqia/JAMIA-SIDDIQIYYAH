@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Lora } from "next/font/google";
 import "./globals.css";
 
 // ── Fonts ────────────────────────────────────────────────────────────────
@@ -18,6 +18,15 @@ const inter = Inter({
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
   preload: true,
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-article",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  preload: false,
 });
 
 // ── Site-wide constants ───────────────────────────────────────────────────
@@ -473,7 +482,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfairDisplay.variable} ${inter.variable} scroll-smooth`}
+      className={`${playfairDisplay.variable} ${inter.variable} ${lora.variable} scroll-smooth`}
     >
       <head>
         {/* ── JSON-LD Structured Data ─────────────────────────────── */}

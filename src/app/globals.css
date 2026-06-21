@@ -49,6 +49,7 @@
   
   --font-display: var(--font-display), serif;
   --font-sans: var(--font-sans), sans-serif;
+  --font-article: var(--font-article), Georgia, "Times New Roman", serif;
   
   --radius-custom-soft: 0.25rem;
   --radius-custom-card: 0.75rem;
@@ -179,3 +180,88 @@
 }
 
 html { scroll-behavior: smooth; }
+
+/* ── Article / Long-form Reading Typography ──────────────────────────────── */
+.article-body {
+  font-family: var(--font-article);
+  font-size: 1.0625rem;       /* 17px — optimal screen reading size */
+  line-height: 1.85;          /* generous breathing room between lines */
+  color: #2c2c2c;
+  letter-spacing: 0.009em;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.article-body p {
+  font-family: var(--font-article);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: #2c2c2c;
+  margin-bottom: 1.6rem;
+  letter-spacing: 0.009em;
+  font-weight: 400;
+}
+
+.article-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-primary);
+  margin-top: 2.5rem;
+  margin-bottom: 0.85rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .article-body {
+    font-size: 1.125rem; /* 18px on wider screens */
+  }
+  .article-body p {
+    font-size: 1.125rem;
+  }
+  .article-body h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.article-body ul {
+  font-family: var(--font-article);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #2c2c2c;
+  margin: 1.5rem 0 1.75rem 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+@media (min-width: 768px) {
+  .article-body ul {
+    font-size: 1.125rem;
+  }
+}
+
+.article-body ul li {
+  margin-bottom: 0.55rem;
+  padding-left: 0.25rem;
+}
+
+.article-body strong {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Drop cap for the very first paragraph */
+.article-body > p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  float: left;
+  line-height: 0.82;
+  margin-right: 0.1em;
+  margin-top: 0.08em;
+  font-style: italic;
+}
+

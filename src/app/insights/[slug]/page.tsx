@@ -125,9 +125,35 @@ const formatBody = (text: string) => {
     // Header 3 (### Title)
     if (trimmed.startsWith("### ")) {
       return (
-        <h3 key={idx} className="font-display text-xl md:text-2xl text-primary font-bold italic mt-8 mb-4">
+        <h3 key={idx}>
           {trimmed.replace("### ", "")}
         </h3>
+      );
+    }
+
+    // Numbered list (1. item)
+    if (/^\d+\.\s/.test(trimmed) || trimmed.match(/\n\d+\.\s/)) {
+      const items = trimmed
+        .split(/\n/)
+        .map(line => line.replace(/^\d+\.\s+/, "").trim())
+        .filter(Boolean);
+      return (
+        <ol key={idx} style={{ counterReset: "ol-counter", listStyle: "none", padding: 0, margin: "1.5rem 0 1.75rem 0" }}>
+          {items.map((item, i) => {
+            const parts = item.split("**");
+            const content = parts.map((chunk, j) =>
+              j % 2 === 1 ? <strong key={j}>{chunk}</strong> : chunk
+            );
+            return (
+              <li key={i} style={{ display: "flex", gap: "0.75rem", marginBottom: "0.7rem", alignItems: "flex-start" }}>
+                <span style={{ minWidth: "1.5rem", height: "1.5rem", background: "var(--color-primary)", color: "#fff", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.65rem", fontWeight: 700, flexShrink: 0, marginTop: "0.18rem", fontFamily: "var(--font-sans)" }}>
+                  {i + 1}
+                </span>
+                <span>{content}</span>
+              </li>
+            );
+          })}
+        </ol>
       );
     }
 
@@ -139,10 +165,14 @@ const formatBody = (text: string) => {
         .filter(Boolean);
 
       return (
-        <ul key={idx} className="list-disc pl-6 space-y-2.5 my-5 text-on-surface-variant text-sm md:text-base leading-relaxed">
-          {items.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
+        <ul key={idx}>
+          {items.map((item, i) => {
+            const parts = item.split("**");
+            const content = parts.map((chunk, j) =>
+              j % 2 === 1 ? <strong key={j}>{chunk}</strong> : chunk
+            );
+            return <li key={i}>{content}</li>;
+          })}
         </ul>
       );
     }
@@ -150,15 +180,14 @@ const formatBody = (text: string) => {
     // Paragraph with inline bold format (**bold**)
     const parts = trimmed.split("**");
     const formattedPara = parts.map((chunk, i) => {
-      // odd indices are bolded text
       if (i % 2 === 1) {
-        return <strong key={i} className="font-bold text-primary">{chunk}</strong>;
+        return <strong key={i}>{chunk}</strong>;
       }
       return chunk;
     });
 
     return (
-      <p key={idx} className="text-on-surface-variant text-sm md:text-base leading-relaxed mb-5">
+      <p key={idx}>
         {formattedPara}
       </p>
     );
@@ -400,7 +429,7 @@ export default async function PostDetailPage({ params }: PageParams) {
             )}
 
             {/* Content Body */}
-            <div className="prose max-w-none text-on-surface font-sans text-sm md:text-base border-b border-primary/5 pb-8">
+            <div className="article-body max-w-none border-b border-primary/5 pb-8">
               {formatBody(decoded.body)}
             </div>
 
