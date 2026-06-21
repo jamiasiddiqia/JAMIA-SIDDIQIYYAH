@@ -408,18 +408,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Accreditations & Recognitions */}
-      <section className="py-16 bg-white border-y border-primary/5">
-        <div className="max-w-7xl mx-auto px-6 md:px-20 text-center space-y-8">
-          <span className="text-xs font-semibold text-on-surface-variant tracking-wider uppercase">Accredited Core Alliances</span>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-70">
-            <div className="p-4 bg-background-warm rounded-lg border border-primary/5 font-display italic text-primary text-xs font-bold">Wifaq ul Madaris Arabia</div>
-            <div className="p-4 bg-background-warm rounded-lg border border-primary/5 font-display italic text-primary text-xs font-bold">Al-Azhar Islamic Center</div>
-            <div className="p-4 bg-background-warm rounded-lg border border-primary/5 font-display italic text-primary text-xs font-bold">Jamia Farooqia Karachi</div>
-            <div className="p-4 bg-background-warm rounded-lg border border-primary/5 font-display italic text-primary text-xs font-bold">Darul Uloom Deoband</div>
-          </div>
-        </div>
-      </section>
+
 
       {/* 8. Leadership & Scholars */}
       <section id="scholars" className="py-24 bg-background-warm">
