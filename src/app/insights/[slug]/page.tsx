@@ -376,7 +376,7 @@ export default async function PostDetailPage({ params }: PageParams) {
                 </span>
               </div>
 
-              <h1 className="font-display text-3xl md:text-5xl font-bold text-primary italic leading-tight">
+              <h1 className="font-display text-3xl md:text-5xl font-bold text-primary leading-tight">
                 {post.title}
               </h1>
 
