@@ -143,13 +143,13 @@ ${fullContext}`;
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
+        model: 'llama-3.3-70b-versatile',  // Groq-hosted, 131K context, fast
         messages: [
           { role: 'system', content: systemInstruction },
           ...messages.slice(-8), // last 8 messages for context window
         ],
         stream: true,
-        temperature: 0.4, // lower = more factual
+        temperature: 0.4,
         max_tokens: 600,
       }),
     });
