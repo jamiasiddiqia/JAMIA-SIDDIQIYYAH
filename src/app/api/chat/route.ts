@@ -1,10 +1,105 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-const apiBaseUrl = process.env.FREELLMAPI_BASE_URL;
-const apiKey = process.env.FREELLMAPI_KEY;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const apiBaseUrl = process.env.FREELLMAPI_BASE_URL!;
+const apiKey = process.env.FREELLMAPI_KEY!;
+
+// ── Static website knowledge base ─────────────────────────────────────────
+const STATIC_CONTEXT = `
+ABOUT JAMIA SIDDIQIYYAH:
+Jamia Siddiqiyyah is a premier Islamic university, online madrasa, Quran academy, and Islamic charity founded in 1994. Located in Madinah, Saudi Arabia. It offers a synthesis of traditional sacred knowledge and modern education. Programs include Hifz, Dars-e-Nizami (Alim Course), Tajweed, Arabic Language, Arabic Calligraphy, and Ifta (Mufti Specialization). The website is at jamiasiddiqiyyah.eu.cc.
+
+MISSION & VALUES:
+The mission is to protect and propagate sacred Islamic knowledge with intellectual rigor and spiritual purity. Core values: 1. Authentic transmission (Isnad) tracing back to the Prophet (PBUH). 2. Character development (Tazkiyah) to raise scholars of prophetic mercy. 3. Global relevance — graduates lead communities worldwide.
+
+PROGRAMS:
+- Hifz Program: Quran memorization with Tajweed, open to children and adults.
+- Dars-e-Nizami (Alim Course): 8-year comprehensive classical Islamic sciences program (Fiqh, Hadith, Tafseer, Arabic, Logic, Philosophy). Recognized by Al-Azhar and Wifaq ul Madaris.
+- Ifta Specialization: Advanced Islamic jurisprudence for Alim graduates to qualify as Muftis.
+- Arabic Language: From beginner to advanced; classical and modern standard Arabic.
+- Tajweed & Quran Recitation: Online and residential classes.
+- Arabic Calligraphy: Traditional Islamic art.
+
+ADMISSIONS:
+Apply at /apply on the website. Fill out the application form with academic history, motivation, and program choice. Basic entrance evaluation required for Dars-e-Nizami. Full and partial scholarships available based on merit and financial need. Over 85% of residential students are on full scholarships.
+
+DONATIONS & CHARITY:
+Donate at /donate. We accept: Zakat, Sadaqah, Waqf (endowments), and Student Sponsorships. 100% donation-delivery model with certified Shariah auditing. Key campaigns: Student Sponsorship (covers full tuition, board, lodging, meals, textbooks), Quran Academy Support, and Campus Development. Contact for donations: contact@jamiasiddiqiyyah.eu.cc.
+
+ONLINE VIRTUAL ACADEMY:
+Live HD interactive sessions, 1,200+ scanned manuscripts, direct Mufti consultations. Students can access from anywhere worldwide.
+
+CONTACT:
+Email: contact@jamiasiddiqiyyah.eu.cc. Website: jamiasiddiqiyyah.eu.cc.
+`;
+
+// ── Build dynamic context from Supabase ─────────────────────────────────────
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function buildDynamicContext(supabase: any): Promise<string> {
+  const parts: string[] = [];
+
+  // Fetch teachers/scholars
+  try {
+    const { data: teachers } = await supabase
+      .from('teachers')
+      .select('name, title, role, specialization, qualification, experience, biography')
+      .limit(15);
+
+    if (teachers && teachers.length > 0) {
+      const teacherLines = teachers.map((t: any) =>
+        `- ${t.name} (${t.title || 'Scholar'}, ${t.role || 'Faculty'}): Specializes in ${t.specialization || 'Islamic Sciences'}. Qualified from ${t.qualification || 'N/A'}. ${(t.biography || '').substring(0, 200)}`
+      );
+      parts.push(`FACULTY & SCHOLARS:\n${teacherLines.join('\n')}`);
+    }
+  } catch (e) { /* skip if table missing */ }
+
+  // Fetch courses
+  try {
+    const { data: courses } = await supabase
+      .from('courses')
+      .select('title, description, level, duration, language, enrollment_status, price')
+      .limit(15);
+
+    if (courses && courses.length > 0) {
+      const courseLines = courses.map((c: any) =>
+        `- ${c.title} | Level: ${c.level} | Duration: ${c.duration} | Language: ${c.language} | Enrollment: ${c.enrollment_status} | Fee: ${c.price > 0 ? '$' + c.price : 'Free/Scholarship'} | ${(c.description || '').substring(0, 150)}`
+      );
+      parts.push(`DETAILED COURSES:\n${courseLines.join('\n')}`);
+    }
+  } catch (e) { /* skip if table missing */ }
+
+  // Fetch published insights articles
+  try {
+    const { data: articles } = await supabase
+      .from('articles')
+      .select('title, category, tags, content, slug')
+      .order('created_at', { ascending: false })
+      .limit(8);
+
+    if (articles && articles.length > 0) {
+      const articleLines = articles.map((a: any) => {
+        let summary = '';
+        try {
+          const decoded = JSON.parse(a.content);
+          if (decoded.status === 'published') {
+            summary = (decoded.body || '').substring(0, 200);
+          }
+        } catch (e) {
+          summary = (a.content || '').substring(0, 200);
+        }
+        return `- "${a.title}" (${a.category}): ${summary}`;
+      }).filter(Boolean);
+
+      if (articleLines.length > 0) {
+        parts.push(`ISLAMIC INSIGHTS ARTICLES:\n${articleLines.join('\n')}`);
+      }
+    }
+  } catch (e) { /* skip if table missing */ }
+
+  return parts.join('\n\n');
+}
 
 export async function POST(req: Request) {
   try {
@@ -14,72 +109,33 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Messages are required' }, { status: 400 });
     }
 
-    const latestMessage = messages[messages.length - 1].content;
-
-    // 1. Initialize Supabase
-    if (!supabaseUrl || !supabaseServiceKey) {
-      return NextResponse.json({ error: 'Database credentials not configured' }, { status: 500 });
-    }
+    // Build dynamic context from live database
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const dynamicContext = await buildDynamicContext(supabase);
 
-    // 2. Generate embedding for the user's latest query
-    let matchingContext = '';
-    let retrievedDocs: any[] = [];
-    if (apiBaseUrl && apiKey) {
-      try {
-        const embedRes = await fetch(`${apiBaseUrl}/embeddings`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${apiKey}`,
-          },
-          body: JSON.stringify({
-            model: 'text-embedding-3-small',
-            input: latestMessage.replace(/\n/g, ' '),
-          }),
-        });
+    // Full context = static knowledge + live database data
+    const fullContext = `${STATIC_CONTEXT}\n\n${dynamicContext}`.trim();
 
-        if (embedRes.ok) {
-          const embedJson = await embedRes.json();
-          const queryEmbedding = embedJson.data?.[0]?.embedding;
+    // Construct system prompt
+    const systemInstruction = `You are the official AI assistant of Jamia Siddiqiyyah (Islamic University, Online Madrasa & Charity). You speak with warmth, clarity, and Islamic courtesy.
 
-          if (queryEmbedding) {
-            // 3. Search Supabase for similar documents
-            const { data: documents, error: matchError } = await supabase.rpc('match_documents', {
-              query_embedding: queryEmbedding,
-              match_threshold: 0.35, // Cosine similarity threshold
-              match_count: 4,        // Return top 4 most relevant chunks
-            });
+Your job is to help visitors by answering questions about:
+- Academic programs, admissions and scholarships
+- Faculty, scholars and their specializations
+- Donations, Zakat, Sadaqah and charitable campaigns
+- The institution's mission, history and values
+- Online courses and virtual academy
 
-            if (!matchError && documents && documents.length > 0) {
-              retrievedDocs = documents;
-              matchingContext = documents
-                .map((doc: any) => `Source: ${doc.title} (${doc.url_path})\nContent: ${doc.content}`)
-                .join('\n\n');
-            }
-          }
-        }
-      } catch (embedErr) {
-        console.error('⚠️ Failed to fetch embedding or match documents:', embedErr);
-      }
-    }
+RULES:
+1. Answer ONLY based on the verified context below. Do NOT invent facts, URLs, names or details not in the context.
+2. If a question falls outside your knowledge, politely say so and invite the user to email contact@jamiasiddiqiyyah.eu.cc or visit the website.
+3. Keep responses concise, helpful and friendly. Use bullet points when listing multiple items.
+4. Begin your first response with "Wa Alaikum Assalam!" if the user greets with Salam, otherwise start naturally.
 
-    // 4. Construct System Prompt with Context
-    const systemInstruction = `You are the official AI assistant of Jamia Siddiqiyyah (Islamic University, Online Madrasa & Charity).
-Your job is to answer queries truthfully, politely, and strictly based on the verified institutional context provided below.
-If the context does not contain relevant details to answer the user's question, state politely that you do not have that specific information and invite them to contact our support team at contact@jamiasiddiqiyyah.eu.cc or explore the website pages.
-Do NOT make up facts, URLs, or details that are not in the context. Keep your responses clear, helpful, and concise.
+VERIFIED INSTITUTIONAL CONTEXT:
+${fullContext}`;
 
-VERIFIED CONTEXT:
-${matchingContext || 'No context found.'}`;
-
-    // 5. Build messages array for chat completion
-    const apiMessages = [
-      { role: 'system', content: systemInstruction },
-      ...messages.slice(-6) // Include up to last 6 messages for context
-    ];
-
-    // 6. Request Chat Completion stream from FreeLLMAPI
+    // Call FreeLLMAPI for chat completion with streaming
     const aiResponse = await fetch(`${apiBaseUrl}/chat/completions`, {
       method: 'POST',
       headers: {
@@ -88,26 +144,33 @@ ${matchingContext || 'No context found.'}`;
       },
       body: JSON.stringify({
         model: 'gpt-4o-mini',
-        messages: apiMessages,
+        messages: [
+          { role: 'system', content: systemInstruction },
+          ...messages.slice(-8), // last 8 messages for context window
+        ],
         stream: true,
+        temperature: 0.4, // lower = more factual
+        max_tokens: 600,
       }),
     });
 
     if (!aiResponse.ok) {
       const errText = await aiResponse.text();
-      return NextResponse.json({ error: `AI service error: ${errText}` }, { status: aiResponse.status });
+      console.error('❌ FreeLLMAPI error:', errText);
+      return NextResponse.json({ error: 'AI service temporarily unavailable. Please try again.' }, { status: 502 });
     }
 
-    // 7. Stream the response directly to client using standard ReadableStream
+    // Stream the AI response chunks back to client
     return new Response(aiResponse.body, {
       headers: {
         'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
+        'Cache-Control': 'no-cache, no-store',
         'Connection': 'keep-alive',
       },
     });
+
   } catch (error: any) {
     console.error('❌ Chat API error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: 'Internal server error. Please try again.' }, { status: 500 });
   }
 }
