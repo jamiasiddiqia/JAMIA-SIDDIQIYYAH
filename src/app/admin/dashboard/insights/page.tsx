@@ -99,6 +99,7 @@ export default function InsightsManager() {
   const [seoKeywords, setSeoKeywords] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
   const [youtubeId, setYoutubeId] = useState("");
+  const [videoSource, setVideoSource] = useState<"youtube" | "local">("youtube");
   const [featuredImage, setFeaturedImage] = useState("");
   const [imageGallery, setImageGallery] = useState<string[]>([]);
   
@@ -253,6 +254,18 @@ export default function InsightsManager() {
     setUploadingVideo(false);
   };
 
+  const extractYoutubeId = (url: string): string => {
+    if (!url) return "";
+    const ytMatch = url.match(/(?:youtube\.from\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i);
+    return ytMatch && ytMatch[1] ? ytMatch[1] : "";
+  };
+
+  const handleVideoUrlChange = (value: string) => {
+    setVideoUrl(value);
+    const extracted = extractYoutubeId(value);
+    setYoutubeId(extracted);
+  };
+
   const handleRemoveGalleryImage = (index: number) => {
     setImageGallery(prev => prev.filter((_, i) => i !== index));
   };
@@ -368,6 +381,13 @@ export default function InsightsManager() {
       setImageGallery([]);
       setVideoUrl(decoded.video_url || "");
       setYoutubeId(decoded.youtube_id || "");
+      if (decoded.youtube_id) {
+        setVideoSource("youtube");
+      } else if (decoded.video_url) {
+        setVideoSource("local");
+      } else {
+        setVideoSource("youtube");
+      }
     }
 
     setView("form");
@@ -407,6 +427,7 @@ export default function InsightsManager() {
     setSeoKeywords("");
     setVideoUrl("");
     setYoutubeId("");
+    setVideoSource("youtube");
     setFeaturedImage("");
     setImageGallery([]);
     setSeoTitle("");
@@ -927,51 +948,101 @@ export default function InsightsManager() {
                 {/* Video specific inputs */}
                 {postType === "video" && (
                   <div className="space-y-4 border-t border-primary/5 pt-4">
-                    <div className="space-y-1.5">
-                      <label className="text-[9px] uppercase tracking-wider block">Video Embed URL or YouTube Link</label>
-                      <div className="flex gap-3">
+                    {/* Video Source Switcher */}
+                    <div className="space-y-2">
+                      <label className="text-[9px] uppercase tracking-wider block">Video Source Type</label>
+                      <div className="flex gap-6 items-center">
+                        <label className="flex items-center gap-2 cursor-pointer font-bold text-[11px] text-primary uppercase tracking-wider">
+                          <input
+                            type="radio"
+                            name="videoSource"
+                            checked={videoSource === "youtube"}
+                            onChange={() => {
+                              setVideoSource("youtube");
+                              setVideoUrl("");
+                              setYoutubeId("");
+                            }}
+                            className="w-4 h-4 rounded-full border-primary/10 text-primary focus:ring-0 cursor-pointer"
+                          />
+                          YouTube Link
+                        </label>
+                        <label className="flex items-center gap-2 cursor-pointer font-bold text-[11px] text-primary uppercase tracking-wider">
+                          <input
+                            type="radio"
+                            name="videoSource"
+                            checked={videoSource === "local"}
+                            onChange={() => {
+                              setVideoSource("local");
+                              setVideoUrl("");
+                              setYoutubeId("");
+                            }}
+                            className="w-4 h-4 rounded-full border-primary/10 text-primary focus:ring-0 cursor-pointer"
+                          />
+                          Local Video File (.mp4)
+                        </label>
+                      </div>
+                    </div>
+
+                    {videoSource === "youtube" ? (
+                      <div className="space-y-1.5 pt-1">
+                        <label className="text-[9px] uppercase tracking-wider block">YouTube Link / URL</label>
                         <input
                           type="text"
                           placeholder="e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                           value={videoUrl}
-                          onChange={(e) => setVideoUrl(e.target.value)}
-                          className="flex-1 px-4 py-3 bg-background-warm border border-primary/5 focus:border-primary/20 rounded-xl font-semibold focus:outline-none"
+                          onChange={(e) => handleVideoUrlChange(e.target.value)}
+                          className="w-full px-4 py-3 bg-background-warm border border-primary/5 focus:border-primary/20 rounded-xl font-semibold focus:outline-none"
                         />
-                        
-                        <input
-                          type="file"
-                          accept="video/*"
-                          id="video-file-upload"
-                          onChange={handleVideoUpload}
-                          disabled={uploadingVideo}
-                          className="hidden"
-                        />
-                        <label
-                          htmlFor="video-file-upload"
-                          className="px-5 py-3.5 bg-background-warm hover:bg-primary/5 border border-primary/10 rounded-xl text-[10px] text-primary transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-40 text-center shrink-0"
-                        >
-                          {uploadingVideo ? (
-                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                          ) : (
-                            <Upload className="w-3.5 h-3.5" />
-                          )}
-                          Or Upload MP4
-                        </label>
+                        <span className="block text-[8px] text-on-surface-variant/40 font-semibold uppercase tracking-wider mt-1">
+                          Pasting a YouTube link automatically extracts the ID for the embedded player on the frontend.
+                        </span>
+                        {youtubeId && (
+                          <div className="mt-2 p-3 bg-green-50 border border-green-200/50 rounded-xl flex items-center gap-2 text-[10px] text-green-800 font-semibold">
+                            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
+                            <span>Extracted YouTube ID: <strong>{youtubeId}</strong></span>
+                          </div>
+                        )}
                       </div>
-                      <span className="block text-[8px] text-on-surface-variant/40 font-semibold uppercase tracking-wider mt-1">
-                        Input a YouTube link to extract embed player, or upload an MP4 directly to Supabase storage.
-                      </span>
-                    </div>
-
-                    {youtubeId && (
-                      <div className="space-y-1">
-                        <label className="text-[9px] uppercase tracking-wider block">Extracted YouTube ID</label>
-                        <input
-                          type="text"
-                          disabled
-                          value={youtubeId}
-                          className="w-full px-4 py-3 bg-background-warm/50 border border-primary/5 rounded-xl font-semibold text-on-surface-variant/50 focus:outline-none"
-                        />
+                    ) : (
+                      <div className="space-y-1.5 pt-1">
+                        <label className="text-[9px] uppercase tracking-wider block">Upload MP4 Video</label>
+                        <div className="flex gap-3">
+                          <input
+                            type="text"
+                            disabled
+                            placeholder="Upload local video file..."
+                            value={videoUrl}
+                            className="flex-1 px-4 py-3 bg-background-warm/50 border border-primary/5 rounded-xl font-semibold text-on-surface-variant/50 focus:outline-none"
+                          />
+                          <input
+                            type="file"
+                            accept="video/*"
+                            id="video-file-upload"
+                            onChange={handleVideoUpload}
+                            disabled={uploadingVideo}
+                            className="hidden"
+                          />
+                          <label
+                            htmlFor="video-file-upload"
+                            className="px-5 py-3.5 bg-background-warm hover:bg-primary/5 border border-primary/10 rounded-xl text-[10px] text-primary transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-40 text-center shrink-0 font-bold"
+                          >
+                            {uploadingVideo ? (
+                              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                            ) : (
+                              <Upload className="w-3.5 h-3.5" />
+                            )}
+                            Select MP4 File
+                          </label>
+                        </div>
+                        <span className="block text-[8px] text-on-surface-variant/40 font-semibold uppercase tracking-wider mt-1">
+                          Select a local MP4 file to upload directly to Supabase storage.
+                        </span>
+                        {videoUrl && !youtubeId && (
+                          <div className="mt-2 p-3 bg-green-50 border border-green-200/50 rounded-xl flex items-center gap-2 text-[10px] text-green-800 font-semibold">
+                            <span className="w-2 h-2 rounded-full bg-green-500 shrink-0" />
+                            <span>Uploaded successfully. Preview URL: <a href={videoUrl} target="_blank" rel="noreferrer" className="underline font-bold">Watch Video</a></span>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
