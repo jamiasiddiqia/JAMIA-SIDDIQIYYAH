@@ -192,15 +192,36 @@ export default function ChatbotWidget() {
                       key={i}
                       className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
-                      <div
-                        className={`p-3.5 rounded-2xl max-w-[85%] text-xs leading-relaxed ${
-                          m.role === 'user'
-                            ? 'bg-primary text-white rounded-tr-none shadow-sm'
-                            : 'bg-white border border-primary/5 text-on-surface-variant rounded-tl-none shadow-sm'
-                        }`}
-                      >
-                        {m.content}
-                      </div>
+                        <div
+                          className={`p-3.5 rounded-2xl max-w-[85%] text-xs leading-relaxed ${
+                            m.role === 'user'
+                              ? 'bg-primary text-white rounded-tr-none shadow-sm'
+                              : 'bg-white border border-primary/5 text-on-surface-variant rounded-tl-none shadow-sm'
+                          }`}
+                        >
+                          {m.role === 'assistant' ? (
+                            <div className="space-y-1.5">
+                              {m.content.split('\n').map((line, li) => {
+                                const trimmed = line.trim();
+                                if (!trimmed) return <div key={li} className="h-1" />;
+                                if (trimmed.startsWith('- ')) {
+                                  return (
+                                    <div key={li} className="flex gap-2 items-start">
+                                      <span className="text-primary/60 mt-0.5 shrink-0">•</span>
+                                      <span>{trimmed.substring(2)}</span>
+                                    </div>
+                                  );
+                                }
+                                if (trimmed.endsWith(':') && trimmed.length < 60) {
+                                  return <p key={li} className="font-semibold text-primary/80 mt-1">{trimmed}</p>;
+                                }
+                                return <p key={li}>{trimmed}</p>;
+                              })}
+                            </div>
+                          ) : (
+                            m.content
+                          )}
+                        </div>
                     </div>
                   ))}
 
