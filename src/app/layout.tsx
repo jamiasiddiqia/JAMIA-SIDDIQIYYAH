@@ -473,6 +473,7 @@ const organizationSchema = {
 };
 
 import { Analytics } from "@vercel/analytics/react";
+import ChatbotWidget from "@/components/ChatbotWidget";
 
 export default function RootLayout({
   children,
@@ -522,6 +523,7 @@ export default function RootLayout({
       <body className="bg-background-warm text-on-surface antialiased min-h-screen selection:bg-secondary-fixed selection:text-on-secondary-fixed">
         {children}
         <Analytics />
+        <ChatbotWidget />
       </body>
     </html>
   );
