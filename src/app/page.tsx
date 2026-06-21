@@ -150,6 +150,10 @@ export default function Home() {
               Scholars
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
             </a>
+            <Link href="/insights" className="relative text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2 group">
+              Islamic Insights
+              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             <a href="#sponsor" className="relative text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2 group">
               Sponsor
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:w-full"></span>
@@ -183,6 +187,7 @@ export default function Home() {
             <a href="#about" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">About</a>
             <a href="#programs" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Academics</a>
             <a href="#scholars" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Scholars</a>
+            <Link href="/insights" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Islamic Insights</Link>
             <a href="#sponsor" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Sponsor</a>
             <a href="#donation" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Donation Center</a>
             <a href="#campus" onClick={() => setMobileMenuOpen(false)} className="text-on-surface-variant hover:text-primary transition-colors text-xs uppercase tracking-widest font-semibold py-2">Campus</a>

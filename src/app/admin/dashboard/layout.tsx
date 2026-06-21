@@ -14,7 +14,8 @@ import {
   Loader2,
   Users,
   ChevronRight,
-  BookOpen
+  BookOpen,
+  Newspaper
 } from "lucide-react";
 
 interface AdminProfile {
@@ -87,6 +88,7 @@ export default function DashboardLayout({
     { id: "contacts", label: "Contact Inbox", icon: Inbox, path: "/admin/dashboard/contacts" },
     { id: "cms", label: "Website CMS Blocks", icon: FileText, path: "/admin/dashboard/cms" },
     { id: "academy", label: "Academy & LMS", icon: BookOpen, path: "/admin/dashboard/academy" },
+    { id: "insights", label: "Islamic Insights", icon: Newspaper, path: "/admin/dashboard/insights" },
     { id: "media", label: "Media Library", icon: FolderClosed, path: "/admin/dashboard/media" },
   ];
 
